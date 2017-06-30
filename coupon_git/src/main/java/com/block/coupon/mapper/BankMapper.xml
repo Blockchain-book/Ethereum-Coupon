@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.block.coupon.mapper.BankMapper" >
+
+   <!-- 根据银行职员id，查询其信息 -->
+   <select id="queryBankStaffById" parameterType="string" resultType="bankstaffcustom">
+      select * 
+      from bank_staff
+      where id=#{id}
+   </select>
+   
+   <!-- 注册员工 -->
+   <insert id="insertBankStaff" parameterType="bankstaffcustom">
+      insert 
+      into bank_staff(id,account,password,salt,publicKey,position, securityCode)
+      values(#{id},#{account},#{password},#{salt},#{publicKey},#{position},#{securityCode})
+   </insert>
+
+  <select id="queryBankStaffByAccount" parameterType="string" resultType="bankstaffcustom">
+     select *
+     from bank_staff
+     where account=#{value}
+  </select>
+
+   <!-- 冻结异常账户 1为冻结 0为未冻结-->
+   <select id="freezeExceptionAccount" parameterType="String">
+      update consumer
+      set isFrozen = 1
+      where account = #{account}
+   </select>
+
+    <!-- 解冻异常账户 -->
+    <select id="thawExceptionAccount" parameterType="String">
+      update consumer
+      set isFrozen = 0,mark = 1
+      where account = #{account}
+    </select>
+
+    <select id="queryAllCouponMes" resultType="couponMes">
+        select  c.id,c.couponValue ,m.name,c.consumptionDate,c.status,c.ownerId
+        from coupon as c,merchant as m,coupon_ruler as cr
+        where c.rulerId = cr.id and m.id = cr.merchantId
+    </select>
+
+    <select id="queryConsumeMerchant" parameterType="string" resultType="CouponConsumeInfo">
+        select m.name as consumeMerchant, cpa.applicationTime as consumeTime from coupon_pay_application as cpa, merchant as m
+        where cpa.couponId=#{value} and cpa.merchantId = m.id
+    </select>
+
+    <update id="updateOnline" parameterType="bankstaffcustom">
+        update bank_staff set online=#{online} where id=#{id}
+    </update>
+</mapper>

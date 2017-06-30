@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingBottom="@dimen/activity_vertical_margin"
+android:orientation="vertical"
+tools:context="com.example.babara.coupon_customer_part.activity.PayCouponActivity">
+
+    <LinearLayout
+        android:id="@+id/state_top_part"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/tab_title"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:background="@color/blue">
+
+            <ImageView
+                android:id="@+id/pay_coupon_back"
+                android:layout_width="60dp"
+                android:layout_gravity="center"
+                android:layout_height="20dp"
+                android:src="@mipmap/backbar"/>
+            <TextView
+                android:id="@+id/txt_top"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginLeft="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:text= "使用优惠券支付" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/state_in_net"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+            <Button
+                android:id="@+id/scan_code_pay_button"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="3dp"
+                android:gravity="center"
+                android:textColor="@drawable/tab_menu_text"
+                android:background="@drawable/tab_menu_bg"
+                android:textSize="20dp"
+                android:text="扫一扫" />
+
+
+            <TextView
+                android:id="@+id/nearby_merchant_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="3dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textColor="@drawable/tab_circulate_text"
+                android:text="附近商户"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@color/mainTitleText" />
+
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/testListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
+
+        </ListView>
+    </LinearLayout>
+</RelativeLayout>
+

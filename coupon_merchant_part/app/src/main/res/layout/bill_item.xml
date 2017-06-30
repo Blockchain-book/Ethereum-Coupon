@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="100dp"
+    android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/bill_time_text"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+            android:textSize="18sp"
+            android:text="time"/>
+        <TextView
+            android:id="@+id/bill_type_text"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+            android:gravity="center"
+            android:text="type"/>
+        <TextView
+            android:id="@+id/bill_remain_text"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+
+            android:gravity="center"
+            android:text="remain"/>
+
+
+
+</LinearLayout>

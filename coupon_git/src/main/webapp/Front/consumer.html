@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>区块链优惠券系统管理后台</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1 class="text-center">电子优惠券后台管理系统</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+          <li role="presentation"><a href="./index.html">商户中心</a></li>
+          <li role="presentation" class="active"><a href="./consumer.html">消费者中心</a></li>
+          <li role="presentation"><a href="./coupon.html">优惠券中心</a></li>
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <ul id="sub-tab-title" class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#consumers" role="tab" data-toggle="tab">消费者查询</a></li>
+          <li role="presentation"><a href="#abnormalities" role="tab" data-toggle="tab">异常用户处理</a></li>
+          <li role="presentation"><a href="#frozen-users" role="tab" data-toggle="tab">已冻结用户列表</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="consumers" class="tab-pane fade in active" role="tabpanel">
+            <h2>消费者查询</h2>
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="consumer-name" class="col-md-1 control-label">用户名</label>
+                <div class="col-md-6">
+                  <input type="text" id="consumer-name" class="form-control" placeholder="请输入用户名">
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-info">搜索</button>
+                </div>
+              </div>
+            </form>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="pull-left">
+                  <p>用户名：<span>xxx</span></p>
+                  <p>状态：<span>未冻结</span></p>
+                </div>
+                <div class="col-md-4 pull-right">
+                  <button type="button" class="btn btn-default pull-right w-45">详细</button>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="pull-left">
+                  <p>用户名：<span>xxx</span></p>
+                  <p>状态：<span>未冻结</span></p>
+                </div>
+                <div class="col-md-4 pull-right">
+                  <button type="button" class="btn btn-default pull-right w-45">详细</button>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="pull-left">
+                  <p>用户名：<span>xxx</span></p>
+                  <p>状态：<span>未冻结</span></p>
+                </div>
+                <div class="col-md-4 pull-right">
+                  <button type="button" class="btn btn-default pull-right w-45">详细</button>
+                </div>
+              </div>
+            </div>
+            <nav>
+              <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div id="abnormalities" class="tab-pane fade" role="tabpanel">
+            <h2>异常用户处理</h2>
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="consumer-name" class="col-md-1 control-label">用户名</label>
+                <div class="col-md-6">
+                  <input type="text" id="consumer-name" class="form-control" placeholder="请输入用户名">
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-info">搜索</button>
+                </div>
+              </div>
+            </form>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="pull-left">
+                  <p>用户名：<span>xxx</span></p>
+                  <p>状态：<span>未冻结</span></p>
+                </div>
+                <div class="col-md-4 pull-right">
+                  <button type="button" class="btn btn-danger pull-right w-45">冻结</button>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="pull-left">
+                  <p>用户名：<span>xxx</span></p>
+                  <p>状态：<span>未冻结</span></p>
+                </div>
+                <div class="col-md-4 pull-right">
+                  <button type="button" class="btn btn-danger pull-right w-45">冻结</button>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="pull-left">
+                  <p>用户名：<span>xxx</span></p>
+                  <p>状态：<span>未冻结</span></p>
+                </div>
+                <div class="col-md-4 pull-right">
+                  <button type="button" class="btn btn-danger pull-right w-45">冻结</button>
+                </div>
+              </div>
+            </div>
+            <nav>
+              <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div id="frozen-users" class="tab-pane fade" role="tabpanel">
+            <h2>已冻结用户列表</h2>
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="consumer-name" class="col-md-1 control-label">用户名</label>
+                <div class="col-md-6">
+                  <input type="text" id="consumer-name" class="form-control" placeholder="请输入用户名">
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-info">搜索</button>
+                </div>
+              </div>
+            </form>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="pull-left">
+                  <p>用户名：<span>xxx</span></p>
+                  <p>状态：<span>未冻结</span></p>
+                </div>
+                <div class="col-md-4 pull-right">
+                  <button type="button" class="btn btn-success pull-right w-45">解冻</button>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="pull-left">
+                  <p>用户名：<span>xxx</span></p>
+                  <p>状态：<span>未冻结</span></p>
+                </div>
+                <div class="col-md-4 pull-right">
+                  <button type="button" class="btn btn-success pull-right w-45">解冻</button>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="pull-left">
+                  <p>用户名：<span>xxx</span></p>
+                  <p>状态：<span>未冻结</span></p>
+                </div>
+                <div class="col-md-4 pull-right">
+                  <button type="button" class="btn btn-success pull-right w-45">解冻</button>
+                </div>
+              </div>
+            </div>
+            <nav>
+              <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/js.cookie.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

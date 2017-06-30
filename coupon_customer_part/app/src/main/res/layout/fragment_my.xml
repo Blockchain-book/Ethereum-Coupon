@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/empty_cart_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#ffefebe7" >
+
+    <RelativeLayout
+        android:id="@+id/top_relative"
+        android:layout_width="fill_parent"
+        android:background="@mipmap/login"
+        android:layout_height="80.0dip" >
+        <TextView
+            android:id="@+id/login_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="10.0dip"
+            android:singleLine="true"
+            android:text="点击登录..."
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingBottom="60.0dip"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip"
+        android:paddingTop="10.0dip"
+        android:layout_below="@id/top_relative">
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:shrinkColumns="0"
+            android:stretchColumns="0" >
+            <TableRow
+                android:id="@+id/setting_row2"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/item"
+                android:paddingBottom="16.0dip"
+                android:paddingTop="8.0dip" >
+                <TextView
+                    android:id="@+id/my_account_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:drawableLeft="@mipmap/heart"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="我的账户"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0sp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:paddingRight="20.0dip"
+                    android:src="@mipmap/rightbar3" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/setting_row4"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/item"
+                android:paddingBottom="16.0dip"
+                android:paddingTop="8.0dip" >
+                <TextView
+                    android:id="@+id/password_settings_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:drawableLeft="@mipmap/heart"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="密码设置"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0sp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:paddingRight="20.0dip"
+                    android:src="@mipmap/rightbar3" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/setting_row5"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/item"
+                android:paddingBottom="16.0dip"
+                android:paddingTop="8.0dip" >
+                <TextView
+                    android:id="@+id/help_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:drawableLeft="@mipmap/heart"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="退出"
+                    android:textColor="#ff333333"
+                    android:textSize="16.0sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:paddingRight="20.0dip"
+                    android:src="@mipmap/rightbar3" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</RelativeLayout>

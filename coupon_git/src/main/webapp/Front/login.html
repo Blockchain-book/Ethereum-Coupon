@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>区块链优惠券系统管理后台</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <script>
+    var SIGN_MODE = 1
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="well" style="max-width:400px; margin: 150px auto;">
+      <form id="login-box">
+        <div class="form-group">
+          <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+        </div>
+        <div id="signin-box">
+          <button id="btn-signin" type="button" class="btn btn-primary btn-block">登陆</button>
+          <a href="javascript:void(0);" id="check-to-signup"><small>没有帐号？点击注册</small></a>
+        </div>
+        <div id="signup-box" style="display:none;">
+          <div class="form-group">
+            <input type="password" class="form-control" id="repassword" name="repassword" placeholder="再次输入密码">
+          </div>
+          <div class="form-group">
+            <label for="position1" class="radio-inline">
+              <input type="radio" name="positionOptions" id="position1" value="1">操作员
+            </label>
+            <label for="position2" class="radio-inline">
+              <input type="radio" name="positionOptions" id="position2" value="2">复审员
+            </label>
+          </div>
+          <button id="btn-signup" type="button" class="btn btn-primary btn-block">注册</button>
+          <a href="javascript:void(0);" id="check-to-signin"><small>已有帐号？点击登录</small></a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/js.cookie.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

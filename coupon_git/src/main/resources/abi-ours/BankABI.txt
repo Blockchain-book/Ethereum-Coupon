@@ -1,0 +1,64 @@
+[{
+    constant: false,
+    inputs: [{
+        name: "signature",
+        type: "bytes"
+    }, {
+        name: "merchantAddress",
+        type: "address"
+    }, {
+        name: "amount",
+        type: "uint256"
+    }],
+    name: "approve",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [{
+        name: "merchantAddress",
+        type: "address"
+    }],
+    name: "approveWithdraw",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [{
+        name: "merchantAccount",
+        type: "address"
+    }],
+    name: "createMerchant",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: true,
+    inputs: [{
+        name: "merchantAccount",
+        type: "address"
+    }],
+    name: "getCorrespondingMerchant",
+    outputs: [{
+        name: "",
+        type: "address"
+    }],
+    payable: false,
+    type: "function"
+}, {
+    constant: true,
+    inputs: [],
+    name: "getMerchants",
+    outputs: [{
+        name: "",
+        type: "address[]"
+    }],
+    payable: false,
+    type: "function"
+}, {
+    inputs: [],
+    payable: false,
+    type: "constructor"
+}]

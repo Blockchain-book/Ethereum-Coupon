@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    //主页相关的颜色
+    <color name="white">#ffffff</color>
+    <color name="blue">#333399</color>
+    <color name="red">#ff6666</color>
+
+    <color name="mainTitleText">#333399</color>
+    <color name="text_gray">#666666</color>
+    <color name="light_yellow">#FFFFCC</color>
+    <color name="light_blue">#99ccff</color>
+
+
+
+</resources>

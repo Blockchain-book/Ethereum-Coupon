@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.block.coupon.mapper.MerchantMapper" >
+   
+  
+   
+   <!-- 查询商户结算券余额-->
+   <select id="querySettlementBalance" parameterType="String" resultType="integer">
+      select settlementBalance
+      from merchant 
+      where id=#{merchantId}
+   </select>
+   
+   <!-- 查询商户最近的优惠券发行规则id -->
+   <select id="queryConCurrentCouponRulerId" parameterType="string" resultType="string">
+      select conCouponRulerId
+      from merchant
+      where id=#{value}
+   </select>
+   
+   <!--更新商户的结算券余额 -->
+   <update id="updateSettlementBalance" parameterType="merchantcustom">
+      update merchant
+      set settlementBalance=#{settlementBalance}
+      where id=#{id}
+   </update>
+   
+   <!-- 商户注册 -->
+   <insert id="insertRegisterApp" parameterType="merchantregistercustom">
+      insert
+      into merchant(id,account,password,salt,name,address,licence,legalEntityName,businessScope,latitude,longitude)
+      values(#{id},#{account},#{password},#{salt},#{name},#{address},#{licence},#{legalEntityName},#{businessScope},#{latitude},#{longitude})
+   </insert>
+   
+   <!--根据商户账户查询商户信息-->
+   <select id="queryMerchantInfoByAccount" parameterType="string" resultType="merchantcustom">
+      select *
+      from merchant
+      where account=#{account}
+   </select>
+   
+   <!--根据商户名查询商户注册信息  -->
+    <select id="queryMerchantRegInfoByAccount" parameterType="string" resultType="merchantregistercustom">
+      select *
+      from merchant
+      where account=#{value}
+   </select>
+   
+   
+   <!-- 更新商户的token -->
+   <update id="updateToken" parameterType="merchantcustom">
+      update merchant
+      set token=#{token}
+      where id=#{id}
+   </update>
+   
+   <!--更新商户的当前发行规则id  -->
+   <update id="updateConCurrentCouponId" parameterType="couponrulercustom" >
+     update merchant
+     set conCouponRulerId=#{id}
+     where id=#{merchantId}
+   </update>
+   
+   <!-- 查询待审核的商户注册信息 -->
+   <select id="queryUncheckMerchant" resultType="merchantregistercustom">
+      select id,account,name,address,licence,legalEntityName,businessScope
+      from merchant
+      where status="0" 
+   </select>
+   
+   <!--更新商户注册请求表信息  -->
+   <update id="updateMerchantRegisterStatus" parameterType="merchantregistercustom">
+     update merchant
+     set status=#{status}
+     where id=#{id}
+   </update>
+   
+   <!--根据商户注册申请表id，查询注册表中的信息  -->
+   <select id="queryMerInfoFromRegisterById" parameterType="string" resultType="merchantregistercustom">
+      select * 
+      from merchant
+      where id=#{value}
+   </select>
+   
+   <!-- 向商户表中出入一条记录 -->
+   <insert id="insertMerchant" parameterType="merchantcustom">
+      insert
+      into merchant(id,account,password,salt,name,address,licence,legalEntityName,businessScope,publicKey,contractAddress)
+      values(#{id},#{account},#{password},#{salt},#{name},#{address},#{licence},#{legalEntityName},#{businessScope},#{publicKey},#{contractAddress})
+   </insert>
+
+   <!-- 添加账单 -->
+   <insert id="insertBill" parameterType="billInfo">
+      insert
+      into bill(id,merchantId,operationDate,type,value)
+      values(#{id},#{merchantId},#{operationDate},#{type},#{value})
+   </insert>
+   
+   <!--查询商户的公钥和合约地址  -->
+   <select id="queryPKAndConAddr" parameterType="string" resultType="merchantcustom">
+     select publicKey,contractAddress
+     from merchant
+     where id=#{id}
+   </select>
+
+
+   <!--商户修改密码-->
+   <update id="modifyPassword" parameterType="ModifyPassVo">
+      update merchant set password = #{newPassword} where account = #{account}
+   </update>
+
+
+   <!--查询结算券流水-->
+   <select id="querySettlementRecord" parameterType="querysettlementcustom" resultType="settlementRecord">
+      select so.merchantId,so.operationDate,so.operationType, so.operationAmount, so.recheckStatus
+      from settlement_operation as so
+      where so.merchantId = #{merchantId}
+      <if test="startDate!=null and startDate!=''">
+         and so.operationDate &gt;= #{startDate}
+      </if>
+      <if test="endDate!=null and endDate!=''">
+         and  so.operationDate &lt;= #{endDate}
+      </if>
+       and operationType="1"
+   </select>
+
+   <!-- 查看商户账号已绑定的银行账户 -->
+   <select id="selectBankAccount" parameterType="string">//这个id与Mapper里的方法名保持一致
+      select bankNumber
+      from merchant
+      where merchantNumber=#{merchantNumber}
+   </select>
+   <!--查看商户账户相关信息,传入商户id-->
+   <select id="queryMerchantInfoById" parameterType="string" resultType="merchantaccountsetting">
+      select m.id,m.name,m.bankNumber,m.bankName
+      from merchant as m
+      where id=#{id}
+   </select>
+
+   <!-- 商户查询bill -->
+   <select id="queryMerchantBill" parameterType="querymerchantbill" resultType="billinfo">
+      select operationDate,type,value
+      from bill
+      where merchantId=#{id}
+      <if test="startDate!=null and startDate!=''">
+         and operationDate &gt;= #{startDate}
+      </if>
+      <if test="endDate!=null and endDate!=''">
+         and  operationDate &lt;= #{endDate}
+      </if>
+   </select>
+
+
+   <select id="queryAccountBalance" parameterType="string" resultType="Integer">
+      select accountBalance
+      from merchant
+      where id=#{id}
+   </select>
+
+   <!-- 重新提交商户简介 -->
+   <update id="insertMerchantIntro" parameterType="merchantseting">
+      update merchant
+      set name=#{name},description=#{description}
+      where id=#{id}
+   </update>
+
+   <!--查询所有的商户，带位置信息返回-->
+   <select id="queryMerchantDistItems" resultType="nearbymerchantdist">
+      select id AS merchantId, name AS merchantName, description AS merchantInfo, latitude, longitude
+      from merchant
+      where status=1
+   </select>
+
+   <!--商户注册信息确认-->
+   <update id="updateStaus" parameterType="merchantstatus">
+      update merchant set status=#{status} where id=#{id}
+   </update>
+
+   <!--商户更新合约地址和公钥-->
+   <update id="updateAddrPk" parameterType="merchantcustom">
+      update merchant set publicKey=#{publicKey},
+      contractAddress=#{contractAddress} where id=#{id}
+   </update>
+
+   <!--根据商户合约地址查询商户的名称-->
+   <select id="queryNameByAddr" parameterType="string" resultType="string">
+      select name from merchant where contractAddress=#{value}
+   </select>
+
+   <!--根据商户id查询商户的名称-->
+   <select id="queryMerchantNameById" parameterType="string" resultType="string">
+      select name from merchant where id=#{value}
+   </select>
+</mapper>

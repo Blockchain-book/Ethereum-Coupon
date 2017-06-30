@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="35dp"
+    android:gravity="center"
+    android:paddingRight="35dp"
+    android:paddingTop="16dp">
+    <LinearLayout
+        android:id="@+id/info_first_part"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="商户名称：     "/>
+            <EditText
+                android:id="@+id/merchant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType=""
+                android:textSize="20sp"
+                android:text="XX商户"
+                android:hint="请输入商户名称"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/mainTitleText" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="商户简介"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/mainTitleText" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/info_submit_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="提交"/>
+    <View
+        android:id="@+id/info_second_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@id/info_submit_button"
+        android:background="@color/mainTitleText" />
+
+    <EditText
+        android:id="@+id/merchant_description"
+        style="?android:attr/textViewStyle"
+        android:background="@null"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="20sp"
+        android:hint="请输入商户简介"
+        android:gravity="top"
+        android:layout_below="@id/info_first_part"
+        android:layout_above="@id/info_second_line"/>
+</RelativeLayout>

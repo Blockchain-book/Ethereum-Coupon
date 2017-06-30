@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_confirm_pay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back"
+    tools:context="com.example.babara.coupon_customer_part.activity.ConfirmPayActivity">
+
+    <LinearLayout
+        android:id="@+id/tab_confirm_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:background="@color/blue">
+        <ImageView
+            android:id="@+id/confirm_back"
+            android:layout_width="60dp"
+            android:layout_gravity="center"
+            android:layout_height="20dp"
+            android:src="@mipmap/backbar"/>
+        <TextView
+            android:id="@+id/txt_top"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text= "优惠券支付" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/confirm_middle_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tab_confirm_title"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:text="商家："/>
+            <TextView
+                android:id="@+id/comfirm_merchant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:text="XXX"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="消费金额：" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textSize="30dp"/>
+                <EditText
+                    android:id="@+id/consumeAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:hint="0.00"
+                    android:textSize="30dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/mainTitleText" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/confirm_pay_button"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="确定"/>
+
+    <ListView
+        android:id="@+id/my_coupon_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/confirm_pay_button"
+        android:layout_below="@id/confirm_middle_area"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+    </ListView>
+
+</RelativeLayout>

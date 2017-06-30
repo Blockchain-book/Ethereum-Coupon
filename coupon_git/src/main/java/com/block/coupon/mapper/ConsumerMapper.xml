@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.block.coupon.mapper.ConsumerMapper" >
+
+    <!--消费者注册 -->
+    <insert id="insertConsumer" parameterType="consumercustom">
+      insert
+      into consumer(id,account,password,salt,publicKey,contractAddress)
+      values(#{id},#{account},#{password},#{salt},#{publicKey},#{contractAddress})
+    </insert>
+
+    <!--消费者修改密码-->
+    <update id="modifyPassword" parameterType="ModifyPassVo">
+        update consumer set password = #{newPassword} where account = #{account}
+    </update>
+
+    <!-- 获取消费者合约地址 -->
+    <select id="queryConsumerConAddr" parameterType="string" resultType="string">
+       select contractAddress
+       from consumer
+       where id=#{value}
+    </select>
+    
+    <!--根据消费者账户查询商户信息-->
+   <select id="queryConsumerInfoByAccount" parameterType="string" resultType="consumercustom">
+      select *
+      from consumer
+      where account=#{value}
+   </select>
+   
+   <!-- 更新消费者的token -->
+   <update id="updateToken" parameterType="merchantcustom">
+      update consumer
+      set token=#{token}
+      where id=#{id}
+   </update>
+   
+   <select id="consumerQueryUnusedCoupons" parameterType="string" resultType="consumercoupon">
+   	  select a.id couponId,b.validStartDate,b.validEndDate,a.consumptionDate,a.couponValue
+   	  from coupon a,coupon_ruler b
+   	  where ownerId = #{value} and a.status="2" and a.rulerId=b.id 
+   </select>
+
+    <select id="queryConsumerCouponByAddress" parameterType="string" resultType="consumercoupon">
+      select a.id couponId,b.validStartDate,b.validEndDate,a.consumptionDate,a.couponValue
+   	  from coupon a,coupon_ruler b
+   	  where a.contractAddress = #{value} and a.rulerId=b.id
+    </select>
+
+    <select id="queryConsumerId" parameterType="string" resultType="string">
+        select consumer.id
+        from consumer
+        where account=#{value}
+    </select>
+
+    <select id="queryConsumerPK" parameterType="string" resultType="string">
+        select publicKey from consumer where id=#{consumerId}
+    </select>
+
+    <select id="queryAllConsumerInfo" resultType="consumerInfo">
+        select id as consumerId, account, mark, isFrozen from consumer where isFrozen='0' and mark='1'
+    </select>
+
+    <select id="queryAbnormalConsumerInfo" resultType="consumerInfo">
+        select id as consumerId, account, mark, isFrozen from consumer where isFrozen='0' and mark='0'
+    </select>
+
+    <update id="markAbnormal" parameterType="string">
+        update consumer set mark = '0' where id=#{consumerId}
+    </update>
+
+    <update id="markNormal" parameterType="string">
+        update consumer set mark = '1' where id=#{consumerId}
+    </update>
+
+    <select id="queryFrozenConsumerInfo" resultType="consumerInfo">
+        select id as consumerId, account, mark, isFrozen from consumer where isFrozen='1'
+    </select>
+
+    <select id="querySearchResult" parameterType="string" resultType="consumerinfo">
+        select id as consumerId, account, mark, isFrozen from consumer where account=#{account}
+    </select>
+
+    <select id="queryAccountById" parameterType="string" resultType="string">
+        select account from consumer where id=#{value}
+    </select>
+</mapper>

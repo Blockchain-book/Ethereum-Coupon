@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>区块链优惠券系统管理后台</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <script>
+    var CHECK_FLAG = 1
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1 class="text-center">电子优惠券后台管理系统</h1>
+      <div id="alert-bar" class="alert alert-success alert-dismissible hide" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <span id="alert-info">请求成功</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+          <li role="presentation" class="active"><a href="./index.html">商户中心</a></li>
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <ul id="sub-tab-title" class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#audit" role="tab" data-toggle="tab">商户审批</a></li>
+          <li role="presentation"><a href="#distribution" role="tab" data-toggle="tab">结算券申请初审</a></li>
+          <li role="presentation"><a href="#withdrawal" role="tab" data-toggle="tab">结算券提现初审</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="audit" class="tab-pane fade in active" role="tabpanel">
+          <h2>注册申请</h2>
+            <div id="audit-content">
+              <div class="panel panel-default">
+                <div class="panel-heading">商户A</div>
+                <div class="panel-body">
+                  <div class="pull-left">
+                    <p>商户注册信息：</p>
+                    <p>注册手机号：<span>13012341234</span></p>
+                    <p>营业执照号：<span>330100123456789</span></p>
+                    <p>注册地址：<span>浙江省杭州市西湖区文三路100号xx大楼101</span></p>
+                  </div>
+                  <div class="col-md-4 pull-right">
+                    <button type="button" class="btn btn-success w-45">通过</button>
+                    <button type="button" class="btn btn-danger pull-right w-45">拒绝</button>
+                    <textarea class="form-control mt10" rows="3" placeholder="请输入审批意见"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">商户A</div>
+                <div class="panel-body">
+                  <div class="pull-left">
+                    <p>商户注册信息：</p>
+                    <p>注册手机号：<span>13012341234</span></p>
+                    <p>营业执照号：<span>330100123456789</span></p>
+                    <p>注册地址：<span>浙江省杭州市西湖区文三路100号xx大楼101</span></p>
+                  </div>
+                  <div class="col-md-4 pull-right">
+                    <button type="button" class="btn btn-success w-45">通过</button>
+                    <button type="button" class="btn btn-danger pull-right w-45">拒绝</button>
+                    <textarea class="form-control mt10" rows="3" placeholder="请输入审批意见"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">商户A</div>
+                <div class="panel-body">
+                  <div class="pull-left">
+                    <p>商户注册信息：</p>
+                    <p>注册手机号：<span>13012341234</span></p>
+                    <p>营业执照号：<span>330100123456789</span></p>
+                    <p>注册地址：<span>浙江省杭州市西湖区文三路100号xx大楼101</span></p>
+                  </div>
+                  <div class="col-md-4 pull-right">
+                    <button type="button" class="btn btn-success w-45">通过</button>
+                    <button type="button" class="btn btn-danger pull-right w-45">拒绝</button>
+                    <textarea class="form-control mt10" rows="3" placeholder="请输入审批意见"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="authorize" class="tab-pane fade" role="tabpanel">商户授权</div>
+          <div id="distribution" class="tab-pane fade" role="tabpanel">
+            <h2>结算券申请初审</h2>
+            <div id="distribution-content">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="pull-left">
+                    <p>商户名：<span>商户A</span></p>
+                    <p>申请结算券金额：<span>50000元</span></p>
+                    <p>商户当前银行账户可用余额：<span>150000元</span></p>
+                  </div>
+                  <div class="col-md-4 pull-right">
+                    <form action="/coupon/bank/scFirstCheck.action" id="3e85721a-2941-4d77-98b5-a9dcce7d90fb">
+                      <input type="hidden" name="merchantId" value="e0944022-7499-11e6-a5cf-6b4e4778832b">
+                      <button type="button" class="btn btn-success w-45 js-check-success">通过</button>
+                      <button type="button" class="btn btn-danger pull-right w-45 js-check-failed">拒绝</button>
+                      <textarea name="operatorOpinion" class="form-control mt10" rows="3" placeholder="请输入审批意见"></textarea>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="pull-left">
+                    <p>商户名：<span>商户A</span></p>
+                    <p>申请结算券金额：<span>50000元</span></p>
+                    <p>商户当前银行账户可用余额：<span>150000元</span></p>
+                  </div>
+                  <div class="col-md-4 pull-right">
+                    <button type="button" class="btn btn-success w-45">通过</button>
+                    <button type="button" class="btn btn-danger pull-right w-45">拒绝</button>
+                    <textarea class="form-control mt10" rows="3" placeholder="请输入审批意见"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="pull-left">
+                    <p>商户名：<span>商户A</span></p>
+                    <p>申请结算券金额：<span>50000元</span></p>
+                    <p>商户当前银行账户可用余额：<span>150000元</span></p>
+                  </div>
+                  <div class="col-md-4 pull-right">
+                    <button type="button" class="btn btn-success w-45">通过</button>
+                    <button type="button" class="btn btn-danger pull-right w-45">拒绝</button>
+                    <textarea class="form-control mt10" rows="3" placeholder="请输入审批意见"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="withdrawal" class="tab-pane fade" role="tabpanel">
+            <h2>结算券提现初审</h2>
+            <div id="withdrawal-content">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="pull-left">
+                    <p>商户名：<span>商户A</span></p>
+                    <p>结算券提现金额：<span>50000元</span></p>
+                    <p>商户当前银行账户可用余额：<span>150000元</span></p>
+                  </div>
+                  <div class="col-md-4 pull-right">
+                    <button type="button" class="btn btn-success w-45">通过</button>
+                    <button type="button" class="btn btn-danger pull-right w-45">拒绝</button>
+                    <textarea class="form-control mt10" rows="3" placeholder="请输入审批意见"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="pull-left">
+                    <p>商户名：<span>商户A</span></p>
+                    <p>结算券提现金额：<span>50000元</span></p>
+                    <p>商户当前银行账户可用余额：<span>150000元</span></p>
+                  </div>
+                  <div class="col-md-4 pull-right">
+                    <button type="button" class="btn btn-success w-45">通过</button>
+                    <button type="button" class="btn btn-danger pull-right w-45">拒绝</button>
+                    <textarea class="form-control mt10" rows="3" placeholder="请输入审批意见"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="pull-left">
+                    <p>商户名：<span>商户A</span></p>
+                    <p>结算券提现金额：<span>50000元</span></p>
+                    <p>商户当前银行账户可用余额：<span>150000元</span></p>
+                  </div>
+                  <div class="col-md-4 pull-right">
+                    <button type="button" class="btn btn-success w-45">通过</button>
+                    <button type="button" class="btn btn-danger pull-right w-45">拒绝</button>
+                    <textarea class="form-control mt10" rows="3" placeholder="请输入审批意见"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/js.cookie.js"></script>
+  <script src="./js/main.js"></script>
+  <script>
+    // 全局操作
+    $(function () {
+      listApprovals()
+      listApplications()
+      listWithdrawals()
+    })
+  </script>
+</body>
+</html>

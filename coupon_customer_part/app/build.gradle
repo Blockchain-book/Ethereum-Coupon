@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.example.babara.coupon_customer_part"
+        minSdkVersion 23
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+//below are the dependencies used in scaning code
+
+repositories {
+
+    mavenCentral()
+
+    maven {
+
+        url "http://dl.bintray.com/journeyapps/maven"
+
+    }
+    flatDir {
+        dirs 'libs'
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //Supports Android 4.0.3 and later (API level 15)
+    // Supports Android 2.1 and later (API level 7), but not optimal for later Android versions.
+    // If you only plan on supporting Android 4.0.3 and up, you don't need to include this.
+    // Convenience library to launch the scanning and encoding Activities.
+    // It automatically picks the best scanning library from the above two, depending on the
+    // Android version and what is available.
+    // Version 3.0.x of zxing core contains some code that is not compatible on Android 2.2 and earlier.
+    // This mostly affects encoding, but you should test if you plan to support these versions.
+    // Older versions e.g. 2.2 may also work if you need support for older Android versions.
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.journeyapps:zxing-android-embedded:2.0.1@aar'
+    compile 'com.journeyapps:zxing-android-legacy:2.0.1@aar'
+    compile 'com.journeyapps:zxing-android-integration:2.0.1@aar'
+    compile 'com.google.zxing:core:3.0.1'
+    testCompile 'junit:junit:4.12'
+    compile files('libs/achartengine-1.1.0.jar')
+    compile 'com.android.support:design:25.2.0'
+    compile 'com.google.android.gms:play-services-appindexing:9.6.1'
+    compile files('libs/MobCommons-2016.1201.1839.jar')
+    compile files('libs/MobTools-2016.1201.1839.jar')
+    compile(name: 'SMSSDK-2.1.3', ext: 'aar')
+    compile(name: 'SMSSDKGUI-2.1.3', ext: 'aar')
+    compile files('libs/BaiduLBS_Android.jar')
+}

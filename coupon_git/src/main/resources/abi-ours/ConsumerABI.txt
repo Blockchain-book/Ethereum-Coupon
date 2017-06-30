@@ -1,0 +1,65 @@
+[{
+    constant: false,
+    inputs: [],
+    name: "thawConsumer",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: true,
+    inputs: [],
+    name: "getCoupons",
+    outputs: [{
+        name: "",
+        type: "address[]"
+    }],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [],
+    name: "freezeConsumer",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [{
+        name: "couponAddr",
+        type: "address"
+    }],
+    name: "couponPay",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [{
+        name: "newConsumer",
+        type: "address"
+    }, {
+        name: "_coupon",
+        type: "address"
+    }],
+    name: "transfer",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [{
+        name: "_coupon",
+        type: "address"
+    }],
+    name: "addCoupon",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    inputs: [{
+        name: "bankAccount",
+        type: "address"
+    }],
+    payable: false,
+    type: "constructor"
+}]

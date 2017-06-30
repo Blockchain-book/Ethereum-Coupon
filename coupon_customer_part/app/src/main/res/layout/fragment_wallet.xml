@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/activity_my_settings"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/circulate_tab_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:background="@color/blue">
+        <TextView
+            android:id="@+id/txt_top"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text= "优惠券钱包" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/circulate_in_net1"
+        android:layout_below="@id/circulate_tab_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/circulate_tab_middle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@color/light_yellow">
+            <LinearLayout
+                android:id="@+id/tab_menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/blue"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/wallet_general_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="3dp"
+                    android:gravity="center"
+                    android:textColor="@drawable/tab_menu_text"
+                    android:background="@drawable/tab_menu_bg"
+                    android:text="优惠券总览"/>
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/mainTitleText" />
+                <TextView
+                    android:id="@+id/wallet_detail_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab_my_bg"
+                    android:drawablePadding="3dp"
+                    android:gravity="center"
+                    android:textColor="@drawable/tab_my_text"
+                    android:text="优惠券明细"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/fragment_wallet_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_below="@+id/circulate_in_net1"
+        android:layout_alignParentLeft="true">
+    </FrameLayout>
+</RelativeLayout>

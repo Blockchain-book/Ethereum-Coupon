@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_present"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.babara.coupon_customer_part.activity.PresentActivity">
+
+    <LinearLayout
+        android:id="@+id/tab_present_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:background="@color/blue">
+        <ImageView
+            android:id="@+id/present_back"
+            android:layout_width="60dp"
+            android:layout_gravity="center"
+            android:layout_height="20dp"
+            android:src="@mipmap/backbar"/>
+        <TextView
+            android:id="@+id/txt_top"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text= "转赠" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/present_image"
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:layout_below="@id/tab_present_title"
+        android:background="@mipmap/redbaghaha"/>
+
+    <LinearLayout
+        android:id="@+id/present_to_info"
+        android:layout_below="@id/present_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="6"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/validity_to_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入手机号码"
+                    android:inputType="phone"
+                    android:maxLines="1" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/scan_code_present_button"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="wrap_content"
+                android:text="扫一扫当面送"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_centerHorizontal="true"
+        android:id="@+id/present_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10sp"
+        android:text="确定转赠"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content" />
+
+    <ListView
+        android:id="@+id/present_coupon_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/present_button"
+        android:layout_below="@id/present_to_info"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+    </ListView>
+
+
+
+</RelativeLayout>

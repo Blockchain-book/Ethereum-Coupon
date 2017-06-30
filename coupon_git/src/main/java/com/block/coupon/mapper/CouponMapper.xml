@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.block.coupon.mapper.CouponMapper" >
+
+
+  <!-- 添加商户优惠券发行规则 -->
+   <insert id="insertCouponRuler" parameterType="couponrulercustom">
+      insert 
+      into coupon_ruler(id,merchantId,reach,give,isAccumulation,capping,totalAmount,issueDate,validStartDate,validEndDate)
+      values(#{id},#{merchantId},#{reach},#{give},#{isAccumulation},#{capping},#{totalAmount},#{issueDate},#{validStartDate},#{validEndDate})
+   </insert>
+   
+   <!--根据优惠券规则id，查询优惠券规相关信息  -->
+   <select id="queryCouponRulerInfo" parameterType="string" resultType="couponrulercustom">
+     select *
+     from coupon_ruler
+     where id=#{value}
+   </select>
+   
+   <!--插入优惠券记录  -->
+   <insert id="insertCoupon" parameterType="couponcustom">
+      insert
+      into coupon(id,rulerId,contractAddress,ownerId,couponValue)
+      values(#{id},#{rulerId},#{contractAddress},#{ownerId},#{couponValue})
+   </insert>
+   
+   <!-- 商户查询优惠券状态 -->
+   <select id="queryCouponStatus" parameterType="querycouponstatus" resultType="couponinfo">
+       select cc.account,c.consumptionDate,c.couponValue,c.status
+       from coupon c,consumer cc
+       where c.rulerId=#{conCurrentCouponRulerId} and (c.status="1" or c.status="2") and c.ownerId=cc.id
+      <if test="startDate!=null and startDate!=''">
+         and c.consumptionDate &gt;= #{startDate}
+       </if>
+       <if test="endDate!=null and endDate!=''">
+         and  c.consumptionDate &lt;= #{endDate}
+       </if>
+   </select>
+   
+   <!-- 查询已使用的优惠券总额-->
+   <select id="queryTotalUsedCoupons" parameterType="string" resultType="couponcountinfo">
+      select count(status) totalUsedCount
+      from coupon
+      where rulerId=#{id} and status="1" 
+      group by status
+   </select>
+   
+    <!-- 查询未使用的优惠券总额-->
+   <select id="queryTotalUnusedCoupons" parameterType="string" resultType="couponcountinfo">
+      select count(status) totalUnusedCount
+      from coupon
+      where rulerId=#{id} and status="2" 
+      group by status
+   </select>
+    <select id="queryCouponsUnsed" parameterType="string" resultType="Integer">
+        select count(status) totalUnusedCount
+        from coupon
+        where ownerId=#{id} and status="2"
+        group by status
+    </select>
+   
+   <!-- 查询优惠券申请信息 -->
+   <select id="queryCouponApplication" parameterType="string" resultType="couponapplicationcustom">
+     select c.account,ca.id,ca.consumerId,ca.consumptionTime
+     from consumer c,coupon_application ca
+     where ca.merchantId=#{id} and ca.status="2" and ca.consumerId=c.id
+   </select>
+   
+   <!--更新优惠券申请状态-->
+   <update id="updateCouponAppStatus" parameterType="couponapplicationcustom">
+      update coupon_application
+      <set>
+        <if test="consumptionValue!=null and consumptionValue!=''">
+         consumptionValue=#{consumptionValue},
+        </if>
+        <if test="couponValue!=null and couponValue!=''">
+         couponValue=#{couponValue},
+        </if>
+        <if test="status!=null and status!=''">
+         status=#{status}
+        </if>
+      </set>
+      where id=#{id}  <!--id为优惠券申请表id  -->
+   </update>
+   
+   <!-- 更新优惠券的持有者、发放日期、消费金额、标志码、和状态-->
+   <update id="updateCouponInfo" parameterType="couponcustom">
+      update coupon
+      set ownerId=#{ownerId},consumptionDate=#{consumptionDate},consumptionValue=#{consumptionValue},markCode=#{markCode},status=#{status}
+      where contractAddress=#{contractAddress}
+   </update>
+   
+   
+   <!--根据优惠券id更新优惠券状态  -->
+   <update id="updateCouponInfoById" parameterType="couponcustom">
+     update coupon
+     set status="1"
+     where id=#{id}
+   </update>
+   
+   <!-- 将优惠券的状态改为申请使用中 -->
+    <update id="updateCouponInUse" parameterType="string">
+     update coupon
+     set status="3"
+     where id=#{id}
+   </update>
+   
+   <!--根据优惠券id查询优惠券合约地址  -->
+   <select id="queryConponConAddr" parameterType="string" resultType="string">
+     select contractAddress
+     from coupon
+     where id=#{id}
+   </select>
+   
+   <!--查询优惠券支付申请  -->
+   <select id="queryCouponPayApp" parameterType="string" resultType="couponpayapplicationcustom" >
+      select c.account,cpa.applicationTime,cpa.applicationCode,coupon.couponValue
+      from consumer as c,coupon_pay_application as cpa,coupon
+      where cpa.merchantId=#{id} and cpa.status="0" and cpa.consumerId=c.id and cpa.couponId=coupon.id order by c.account
+   </select>
+   
+   <!--更新优惠券支付申请表的状态  -->
+   <update id="updateCouponPayApp" parameterType="string">
+      update coupon_pay_application
+      set status="1"
+      where applicationCode=#{value}
+   </update>
+   
+   <!--未发放优惠券查询  -->
+   <select id="queryUnIssuedCoupons" parameterType="string" resultType="couponcustom">
+     select *
+     from coupon
+     where ownerId=#{value} and status="0"
+   </select>
+   
+   <!--根据优惠券支付申请码查询消费者id和优惠券id  -->
+   <select id="queryIdByAppCode" parameterType="string" resultType="couponpayapplicationcustom">
+     select cpa.consumerId,cpa.couponId,c.couponValue,cpa.consumeValue,cpa.applicationTime
+     from coupon_pay_application cpa,coupon c
+     where applicationCode=#{value} and cpa.couponId=c.id
+   </select>
+    
+    <!--添加优惠券申请  -->
+    <insert id="insertCouponApplication" parameterType="couponapplicationcustom">
+       insert
+       into coupon_application(id,merchantId,consumerId,consumptionTime)
+       values(#{id},#{merchantId},#{consumerId},#{consumptionTime})
+    </insert>
+    
+    <!--添加优惠券支付申请  -->
+    <insert id="insertCouponPayApp" parameterType="couponpayapplicationcustom">
+       insert
+       into coupon_pay_application(id,merchantId,couponId,consumerId,applicationTime,applicationCode,consumeValue)
+       values(#{id},#{merchantId},#{couponId},#{consumerId},#{applicationTime},#{applicationCode},#{consumeValue})
+    </insert>
+
+    <!-- 修改终止发行的优惠券的状态 --><!-- guowei -->
+    <update id="updateUnIssuedCoupon" parameterType="string">
+        update coupon set status="3" where rulerId=#{id} and status="0"
+    </update>
+
+    <!-- 查询所有为发行的优惠券总额 --><!-- guowei -->
+    <select id="queryTotalUnIssuedCouponValue" parameterType="string" resultType="int">
+        select sum(couponValue) from coupon where rulerId=#{id} and status="0"
+    </select>
+
+    <!-- 修改制定ruler的发行总额 --><!-- guowei -->
+    <update id="updateCouponRulerInfo" parameterType="couponruler">
+        update coupon_ruler set totalAmount=#{totalAmount},status=#{status} where id=#{id}
+    </update>
+
+    <!-- 查询所有优惠券发行规则发行流水 --><!-- guowei -->
+    <select id="queryCouponRulerBills" parameterType="querymerchantbills" resultType="couponruler">
+        select * from couponRuler where merchantId=#{id}
+        <if test="startDate!=null and startDate!=''">
+            and issueDate &gt;= #{startDate}
+        </if>
+        <if test="endDate!=null and endDate!=''">
+            and issueDate &lt;= #{endDate}
+        </if>
+    </select>
+
+    <!-- 查询所有优惠券发行规则回收流水 --><!-- guowei -->
+    <select id="queryCouponRulerWithdrawBills" parameterType="querymerchantbills" resultType="couponruler">
+        select * from couponRuler where merchantId=#{id}
+        <if test="startDate!=null and startDate!='' and withdrawDate!=null and withdrawDate!=''">
+            and withdarwDate &gt;= #{startDate}
+        </if>
+        <if test="endDate!=null and endDate!='' and withdrawDate!=null and withdrawDate!=''">
+            and withdrawDate &lt;= #{endDate}
+        </if>
+    </select>
+
+    <!--根据merchantId查询优惠券发行规则-->
+    <select id="queryCouponRulerByMerchantId" parameterType="string" resultType="couponruler">
+        select * from coupon_ruler where merchantId = #{merchantId} and status = '1'
+    </select>
+
+    <!--查询所有当前消费者可用的优惠券-->
+    <select id="queryAvailableCouopns" parameterType="availablequery" resultType="couponItem">
+        select t1.id AS couponId, t1.couponValue AS amount, t1.consumptionDate AS obtainDate,
+                t2.validStartDate AS validityFrom, t2.validEndDate AS validityTo
+        from coupon AS t1, coupon_ruler AS t2
+        where ownerId=#{consumerId} and #{consumptionAmount} >= t2.reach
+        t1.rulerId = t2.id and t1.status = "2"
+    </select>
+
+    <!--转赠优惠券-->
+    <update id="presentCoupon" parameterType="UpdateCouponOwner">
+        update coupon
+        set ownerId = #{targetId}
+        where id = #{couponsId}
+    </update>
+
+    <!--修改支付后优惠券状态-->
+    <update id="updatePayCouponStatus" parameterType="string">
+        update coupon set status="1" where id=#{couponId}
+    </update>
+
+    <!--根据优惠券合约地址查询获取时消费金额-->
+    <select id="queryConsumptionValueByAddr" parameterType="string" resultType="string">
+        select consumptionValue from coupon where contractAddress=#{value}
+    </select>
+
+    <!--根据优惠券合约地址查询优惠券Id-->
+    <select id="queryCouponIdByAddr" parameterType="string" resultType="string">
+        select id from coupon where contractAddress=#{value}
+    </select>
+
+    <!--插入优惠券转赠记录-->
+    <insert id="insertCouponMigration" parameterType="couponmigration">
+        insert into coupon_migration values(#{id},#{couponId},#{fromId},#{toId},#{operationDate})
+    </insert>
+
+    <!--查询所有消费者已支付的优惠券总额-->
+    <select id="queryTotalConsumeCoupon" parameterType="string" resultType="int">
+        select sum(coupon.couponValue) from coupon, coupon_pay_application as cpa
+        where cpa.consumerId =#{consumerId}  and cpa.couponId = coupon.id and cpa.status='1'
+    </select>
+
+    <!--查询所有消费者已赠出的优惠券总额-->
+    <select id="queryTotalTransferCoupon" parameterType="string" resultType="int">
+        select sum(coupon.couponValue) from coupon, coupon_migration as cm
+        where cm.fromId =#{consumerId}  and cm.couponId = coupon.id
+    </select>
+
+    <select id="queryStateByConAddr" parameterType="string" resultType="string">
+        select status from coupon where contractAddress=#{value}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

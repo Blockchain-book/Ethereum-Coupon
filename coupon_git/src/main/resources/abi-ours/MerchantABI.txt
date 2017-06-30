@@ -1,0 +1,181 @@
+[{
+    constant: true,
+    inputs: [],
+    name: "getUnusedCoupons",
+    outputs: [{
+        name: "",
+        type: "address[]"
+    }],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [],
+    name: "settlementWithdraw",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [{
+        name: "amount",
+        type: "uint256"
+    }],
+    name: "settlementApprove",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [{
+        name: "curDate",
+        type: "bytes32"
+    }],
+    name: "terminateCoupon",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [{
+        name: "consumeValue",
+        type: "uint256"
+    }, {
+        name: "consumeDate",
+        type: "bytes32"
+    }, {
+        name: "couponAddr",
+        type: "address"
+    }, {
+        name: "_consumer",
+        type: "address"
+    }],
+    name: "confirmCouponPay",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: true,
+    inputs: [],
+    name: "getOwner",
+    outputs: [{
+        name: "",
+        type: "address"
+    }],
+    payable: false,
+    type: "function"
+}, {
+    constant: true,
+    inputs: [],
+    name: "getNotGivenCoupons",
+    outputs: [{
+        name: "",
+        type: "address[]"
+    }],
+    payable: false,
+    type: "function"
+}, {
+    constant: true,
+    inputs: [],
+    name: "getUsedCoupons",
+    outputs: [{
+        name: "",
+        type: "address[]"
+    }],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [{
+        name: "value",
+        type: "uint256"
+    }, {
+        name: "limit",
+        type: "uint256"
+    }, {
+        name: "quantity",
+        type: "uint256"
+    }, {
+        name: "startDate",
+        type: "bytes32"
+    }, {
+        name: "endDate",
+        type: "bytes32"
+    }],
+    name: "issueCoupon",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: true,
+    inputs: [],
+    name: "getSettlementBalance",
+    outputs: [{
+        name: "",
+        type: "uint256"
+    }],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [{
+        name: "couponAddr",
+        type: "address"
+    }],
+    name: "addToUsedCoupons",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: true,
+    inputs: [{
+        name: "mark",
+        type: "bytes32"
+    }],
+    name: "getCorrespondingGrant",
+    outputs: [{
+        name: "",
+        type: "address[]"
+    }],
+    payable: false,
+    type: "function"
+}, {
+    constant: false,
+    inputs: [{
+        name: "_consumer",
+        type: "address"
+    }, {
+        name: "quantity",
+        type: "uint256"
+    }, {
+        name: "date",
+        type: "bytes32"
+    }, {
+        name: "mark",
+        type: "bytes32"
+    }, {
+        name: "obtainValue",
+        type: "uint256"
+    }],
+    name: "grant",
+    outputs: [],
+    payable: false,
+    type: "function"
+}, {
+    constant: true,
+    inputs: [],
+    name: "getHistoryCoupons",
+    outputs: [{
+        name: "",
+        type: "address[]"
+    }],
+    payable: false,
+    type: "function"
+}, {
+    inputs: [{
+        name: "merchantAccount",
+        type: "address"
+    }],
+    payable: false,
+    type: "constructor"
+}]

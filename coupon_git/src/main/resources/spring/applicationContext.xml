@@ -1,0 +1,90 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+	
+ <!-- 这个配置文件里面主要包括持久层的配置和业务层的配置。 -->
+ <!-- 持久层：数据库连接池，spring和mybatis的整合、配置SqlSessionFactoryBean和mapper -->
+ <!-- 业务层：配置了数据库的事务控制，基于spring的aop -->
+		<context:property-placeholder location="classpath:db.properties"/>
+  
+  <!-- dbcp2 -->  
+	 <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"  
+	    destroy-method="close">  
+	    <property name="driverClassName" value="${jdbc.driver}" />  
+	    <property name="url" value="${jdbc.url}" />  
+	    <property name="username" value="${jdbc.username}" />  
+	    <property name="password" value="${jdbc.password}" />  
+	  <!--   连接初始值，连接池启动时创建的连接数量的初始值  默认值是0   -->
+	    <property name="initialSize" value="3" />  
+	    <!-- 最小空闲值.当空闲的连接数少于阀值时，连接池就会预申请去一些连接，以免洪峰来时来不及申请  默认值是0   -->
+	    <property name="minIdle" value="3" />  
+	    <!-- 最大空闲值.当经过一个高峰时间后，连接池可以慢慢将已经用不到的连接慢慢释放一部分，一直减少到maxIdle为止 ，0时无限制  默认值是8  --> 
+	    <property name="maxIdle" value="5" />  
+	  <!--   连接池的最大值，同一时间可以从池分配的最多连接数量，0时无限制   默认值是8   -->
+	    <property name="maxTotal" value="15" />  
+	</bean>  
+
+
+<!--  让spring管理Sqlsessionfactory ，使用mybatis和spring整合包中的类 
+      不需要在代码中重复生成Sqlsessionfactory对象-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据库连接池 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 加载mybatis的全局配置文件 -->
+		<property name="configLocation" value="classpath:mybatis/sqlMapConfig.xml" />
+	</bean>
+	
+<!-- mapper扫描器，在此配置后，不需要通过SqlSession对象的getMapper方法获取mapper接口的代理类的对象，可在代码中直接注入 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	  <property name="basePackage" value="com.block.coupon.mapper"></property>
+	  <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+	
+	<!--service层配置  -->
+	<bean id="merchantService" class="com.block.coupon.service.impl.MerchantServiceImpl"/>
+	<bean id="bankService" class="com.block.coupon.service.impl.BankServiceImpl"/>
+	<bean id="consumerService" class="com.block.coupon.service.impl.ConsumerServiceImpl"/>
+
+	
+   <!-- 事务管理器配置
+       对mybatis操作数据库进行事务控制，spring使用jdbc的事务控制类
+		-->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- 数据源
+		dataSource在applicationContext-dao.xml中配置了
+		 -->
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<!-- 通知，声明式的事务管理 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 传播行为 -->
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="insert*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+			<tx:method name="query*" propagation="SUPPORTS" read-only="true"/>
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+			<tx:method name="select*" propagation="SUPPORTS" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- aop ，这里的意思是对cn.art.edu.service.impl包下的所有类的所有方法进行事务控制，这些方法在执行前后都会执行一些语句进行事务控制， 面向切面编程-->
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.block.coupon.service.impl.*.*(..))"/>
+	</aop:config>
+
+</beans>

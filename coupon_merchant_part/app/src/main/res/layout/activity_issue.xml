@@ -1,0 +1,270 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.creation.coupon_merchant_part.activity.RegisterActivity">
+
+    <LinearLayout
+        android:id="@+id/tab_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@color/blue">
+        <ImageView
+            android:id="@+id/issue_back"
+            android:layout_width="60dp"
+            android:layout_gravity="center"
+            android:layout_height="20dp"
+            android:src="@mipmap/backbar"/>
+        <TextView
+            android:id="@+id/txt_top"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text= "优惠券发行" />
+    </LinearLayout>
+    <ScrollView
+        android:id="@+id/in_net"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="可用余额:    "
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/remain_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="n"
+                    android:textSize="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="    元"
+                    android:textSize="20dp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/mainTitleText" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="优惠券发行规则:"
+                android:layout_gravity="left"
+                android:textSize="15dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorAccent"
+                    android:text="满  "/>
+                <EditText
+                    android:id="@+id/up_to_edit"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:hint="100"
+                    android:maxLines="1"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:inputType="number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorAccent"
+                    android:text="  元"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorAccent"
+                    android:text="送  "/>
+                <EditText
+                    android:id="@+id/reduction_edit"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:hint="10"
+                    android:maxLines="1"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:inputType="number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorAccent"
+                    android:text="  元"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorAccent"
+                    android:text="每人封顶  "/>
+                <EditText
+                    android:id="@+id/most_edit"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:hint="100"
+                    android:maxLines="1"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:inputType="number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorAccent"
+                    android:text="  元            "/>
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/add_up_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+
+                android:layout_gravity="center"
+                android:textColor="@color/colorAccent"
+                android:checked="true"
+                android:text="是否累加" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorAccent"
+                    android:text="发行总量  "/>
+                <EditText
+                    android:id="@+id/total_edit"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:hint="100"
+                    android:maxLines="1"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:inputType="number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorAccent"
+                    android:text="  元            "/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorAccent"
+                    android:text="发行期  "/>
+                <EditText
+                    android:id="@+id/from_date_edit"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:hint="2017-01-13"
+                    android:maxLines="1"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:inputType="datetime"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorAccent"
+                    android:text=" 至"/>
+
+                <EditText
+                    android:id="@+id/to_date_edit"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:hint="2017-11-13"
+                    android:maxLines="1"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:inputType="datetime"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/issue_button"
+                android:layout_width="200dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:text="发行"
+                android:background="@color/light_blue"
+                android:layout_marginTop="30dp"
+                android:textSize="20dp"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/no_net"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+</LinearLayout>

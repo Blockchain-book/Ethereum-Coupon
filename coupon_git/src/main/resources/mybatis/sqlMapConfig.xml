@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 这个是mybatis的专有配置文件 -->
+
+<configuration>
+
+<!-- 全局setting配置 -->
+
+<!-- 定义别名 -->
+<typeAliases>
+  <!--批量扫描的方式定义别名  -->
+  <package name="com.block.coupon.po"/>
+</typeAliases>
+
+<!-- 使用自动扫描器时，mapper.xml文件如果和mapper.java接口在一个目录则此处不用定义mappers --> 
+<!-- <mappers>
+<package name="cn.itcast.ssm.mapper" />
+</mappers> -->
+
+
+</configuration>

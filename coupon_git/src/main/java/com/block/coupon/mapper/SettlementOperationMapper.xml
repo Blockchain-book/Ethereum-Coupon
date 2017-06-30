@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.block.coupon.mapper.SettlementOperationMapper" >
+
+   <!-- 根据银行职员id，查询其信息 -->
+   <select id="queryBankStaffById" parameterType="string" resultType="bankstaffcustom">
+      select * 
+      from bank_staff
+      where id=#{id}
+   </select>
+   
+   <!--结算券申请初审列表查询 -->
+  <select id="querySFCList"  resultType="settlementapplication">
+       select so.id,merchantId,merchant.name merchantName,operationAmount,operationDate,firstEncryptStr
+       from settlement_operation so,merchant
+       where so.operationType="1" and  checkStatus="1" and so.merchantId=merchant.id 
+  </select>
+  
+  <!--结算券申请复审列表查询 -->
+  <select id="querySSCList"   resultType="settlementapplication">
+       select so.id,merchantId,merchant.name merchantName,operationAmount,operationDate,firstEncryptStr
+       from settlement_operation so,merchant
+       where so.operationType="1" and  checkStatus="2" and recheckStatus="1" and so.merchantId=merchant.id 
+  </select>
+   
+    <!--结算券提现初审列表查询 -->
+  <select id="querySWDFList"  resultType="settlementapplication">
+       select so.id,merchantId,merchant.name merchantName,operationAmount,operationDate,firstEncryptStr
+       from settlement_operation so,merchant
+       where so.operationType="2" and  checkStatus="1" and so.merchantId=merchant.id 
+  </select>
+  
+  <!--结算券提现复审列表查询 -->
+  <select id="querySWDSList"   resultType="settlementapplication">
+       select so.id,merchantId,merchant.name merchantName,operationAmount,operationDate,firstEncryptStr
+       from settlement_operation so,merchant
+       where so.operationType="2" and  checkStatus="2" and recheckStatus="1" and so.merchantId=merchant.id 
+  </select>
+  
+  <!--添加结算券初审结果-->
+   <update id="updateSettlementFirstCheck" parameterType="settlementoperationcustom">
+      update settlement_operation 
+      set operatorId=#{bankStaffId},operationTime=#{operationTime},operatorOpinion=#{operatorOpinion},checkStatus=#{checkStatus},firstEncryptStr=#{firstEncryptStr}
+      where id=#{id}
+   </update>
+   
+    <!--添加结算券复审结果-->
+   <update id="updateSettlementSecondCheck" parameterType="settlementoperationcustom">
+      update settlement_operation 
+      set recheckId=#{recheckId},recheckTime=#{recheckTime},recheckOpinion=#{recheckOpinion},recheckStatus=#{recheckStatus},secondEncryptStr=#{secondEncryptStr}
+      where id=#{id}
+   </update>
+   
+    <!--插入结算券操作记录  -->
+   <insert id="insertSettlementOperation" parameterType="settlementoperationcustom">
+      insert 
+      into settlement_operation(id,merchantId,operationAmount,operationDate,operationType)
+      values(#{id},#{merchantId},#{operationAmount},#{operationDate},#{operationType})
+   </insert>
+ 
+    <select id="querySettlomentByMerchantId" parameterType="string" resultType="settlementoperationcustom">
+        SELECT *
+--         id, merchantId, operationAmount, operationDate, operationType, operatorId, operationTime, operatorOpinion,
+--           checkStatus, firstEncryptStr, recheckId, recheckTime, recheckOpinion, recheckStatus, secondEncryptStr
+        FROM settlement_operation
+        WHERE merchantId = #{merchantId}
+    </select>
+
+    <select id="querySettlementById" parameterType="string" resultType="settlementoperationcustom">
+        SELECT *
+        --         id, merchantId, operationAmount, operationDate, operationType, operatorId, operationTime, operatorOpinion,
+        --           checkStatus, firstEncryptStr, recheckId, recheckTime, recheckOpinion, recheckStatus, secondEncryptStr
+        FROM settlement_operation
+        WHERE id = #{id}
+    </select>
+</mapper>
