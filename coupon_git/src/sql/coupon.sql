@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `coupon` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `coupon`;
 -- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
 --
--- Host: 127.0.0.1    Database: czbank
+-- Host: 127.0.0.1    Database: 
 -- ------------------------------------------------------
 -- Server version	5.7.10
 
