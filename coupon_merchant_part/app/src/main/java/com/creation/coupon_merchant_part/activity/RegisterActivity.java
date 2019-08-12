@@ -113,6 +113,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         };
         SMSSDK.registerEventHandler(eventHandler); // 注册回调监听接口
 
+        System.out.println("initLocationListener");
         initLocationListener();
     }
 
@@ -150,6 +151,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                         latitude = bdLocation.getLatitude()+"";
                         longitude = bdLocation.getLongitude()+"";
                         businessAddress = bdLocation.getAddrStr();
+                        System.out.println("businessAddress: " + businessAddress);
                         new Thread(){
                             public void run(){
                                 uiHandler.post(runnableUi);

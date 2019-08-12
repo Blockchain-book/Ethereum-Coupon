@@ -9,22 +9,18 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.creation.coupon_merchant_part.R;
-import com.creation.coupon_merchant_part.pojo.CouponRequestItem;
-import com.creation.coupon_merchant_part.pojo.UrlManager;
 
-import java.util.ArrayList;
 /**
  * Created by Babara Liang on 2016/12/26.
  * Description:该方法主要实现流通页面上顶部导航栏，及他们的点击事件。

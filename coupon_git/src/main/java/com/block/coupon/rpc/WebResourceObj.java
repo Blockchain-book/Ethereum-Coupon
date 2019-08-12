@@ -10,8 +10,10 @@ public class WebResourceObj {
 	
 //	private final static String ROUTE="http://192.168.137.176:8545";
 
-	private final static String ROUTE="http://10.82.59.76:8545";
-	
+//	private final static String ROUTE="http://10.82.59.76:8545";
+
+    private final static String ROUTE="http://127.0.0.1:8545";
+
 	public static WebResource getWebResource(){
 //    	客户端配置对象
         ClientConfig clientConfig = new DefaultClientConfig();

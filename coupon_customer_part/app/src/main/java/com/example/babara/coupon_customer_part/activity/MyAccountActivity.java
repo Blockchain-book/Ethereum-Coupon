@@ -1,11 +1,9 @@
 package com.example.babara.coupon_customer_part.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -13,10 +11,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.babara.coupon_customer_part.R;
 import com.example.babara.coupon_customer_part.zxing.encoding.EncodingUtils;
 
-public class MyAccountActivity extends Activity implements View.OnClickListener{
+public class MyAccountActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ImageView backImageView;
     private Button logOutButton;

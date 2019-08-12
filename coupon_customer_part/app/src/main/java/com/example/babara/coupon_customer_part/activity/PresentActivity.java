@@ -1,29 +1,24 @@
 package com.example.babara.coupon_customer_part.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.babara.coupon_customer_part.R;
 import com.example.babara.coupon_customer_part.pojo.CouponItem;
-import com.example.babara.coupon_customer_part.pojo.NearbyMerchantItem;
 import com.example.babara.coupon_customer_part.utils.AsyncResponse;
-import com.example.babara.coupon_customer_part.utils.CouponAdapter;
-import com.example.babara.coupon_customer_part.utils.HttpTaskForJsonTool;
 import com.example.babara.coupon_customer_part.utils.HttpTaskTool;
-import com.example.babara.coupon_customer_part.utils.NearbyMerchantAdapter;
 import com.example.babara.coupon_customer_part.utils.PresentCouponAdapter;
 import com.example.babara.coupon_customer_part.utils.UrlManager;
 import com.example.babara.coupon_customer_part.zxing.activity.CaptureActivity;
@@ -36,11 +31,10 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.Proxy;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class PresentActivity extends Activity implements View.OnClickListener{
+public class PresentActivity extends AppCompatActivity implements View.OnClickListener{
     private Button submitButton;
     private ArrayList<CouponItem> list;
     private ListView listView;

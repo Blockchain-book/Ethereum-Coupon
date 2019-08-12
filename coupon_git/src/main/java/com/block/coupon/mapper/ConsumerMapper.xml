@@ -21,7 +21,7 @@
        where id=#{value}
     </select>
     
-    <!--根据消费者账户查询商户信息-->
+    <!--根据消费者账户查询消费者信息-->
    <select id="queryConsumerInfoByAccount" parameterType="string" resultType="consumercustom">
       select *
       from consumer
@@ -36,13 +36,13 @@
    </update>
    
    <select id="consumerQueryUnusedCoupons" parameterType="string" resultType="consumercoupon">
-   	  select a.id couponId,b.validStartDate,b.validEndDate,a.consumptionDate,a.couponValue
+   	  select a.id as couponId,b.validStartDate,b.validEndDate,a.consumptionDate,a.couponValue
    	  from coupon a,coupon_ruler b
-   	  where ownerId = #{value} and a.status="2" and a.rulerId=b.id 
+   	  where a.ownerId = #{value} and a.status="2" and a.rulerId=b.id
    </select>
 
     <select id="queryConsumerCouponByAddress" parameterType="string" resultType="consumercoupon">
-      select a.id couponId,b.validStartDate,b.validEndDate,a.consumptionDate,a.couponValue
+      select a.id as couponId,b.validStartDate,b.validEndDate,a.consumptionDate,a.couponValue
    	  from coupon a,coupon_ruler b
    	  where a.contractAddress = #{value} and a.rulerId=b.id
     </select>

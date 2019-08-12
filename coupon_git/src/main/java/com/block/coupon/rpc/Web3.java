@@ -22,6 +22,7 @@ import com.block.coupon.sha3.Sha3;
 import com.block.coupon.util.ReadAccount;
 import com.sun.jersey.api.client.WebResource;
 
+
 public class Web3 {
 	
 	private static WebResource r = WebResourceObj.getWebResource();
@@ -90,15 +91,18 @@ public class Web3 {
 //	发送交易执行这个方法
 	public static String sendTransaction(String functionName,String[] type,String[] content,String from,String to){
 		String data = getData(functionName,type,content);
-		System.out.println(data);
-		String gas = "0x470000";//"0x9faf080";
+		System.out.println("data:" + data);
+
+//		String gas = getGas(from, to, data);
+//		System.out.println(gas);
+		String gas = "0x9faf080";//"0x9faf080";0x470000
 		String rpc = "{\"jsonrpc\":\"2.0\",\"method\": \"eth_sendTransaction\", \"params\": [{\"from\": \""+from+"\", \"to\": \""+to+"\",\"gas\":\""+gas+"\" ,\"data\": \""+data+"\"}], \"id\": 8}";
 		System.out.println(rpc);
 		String response = r.accept(MediaType.APPLICATION_JSON, MediaType.TEXT_XML)
                 .entity(rpc, MediaType.APPLICATION_JSON)
                 .post(String.class);
 		JSONObject json=JSONObject.fromObject(response);
-		System.out.println(json);
+		System.out.println(json.toString(4));
 	    System.out.println(json.getString("result"));
 //	    返回交易哈希
 	    return json.getString("result");
@@ -107,14 +111,21 @@ public class Web3 {
 	
 	
 	public static String getValue(String functionName,String[] type,String[] content,String from,String to){
+		for(int i = 0; i < content.length; ++i) {
+			System.out.println("getValue.content[" + i + "]: " + content[i]);
+		}
+
 		String data = getData(functionName,type,content);
-		System.out.println(data);
+		System.out.println("getValue.data:" + data);
 		String rpc = "{\"jsonrpc\":\"2.0\",\"method\": \"eth_call\", \"params\": [{\"from\": \""+from+"\", \"to\": \""+to+"\",\"data\": \""+data+"\"},\"latest\"], \"id\": 8}";
+		System.out.println("getValue.rpc: " + rpc);
 		String response = r.accept(MediaType.APPLICATION_JSON, MediaType.TEXT_XML)
                 .entity(rpc, MediaType.APPLICATION_JSON)
                 .post(String.class);
 		JSONObject json=JSONObject.fromObject(response);
-		System.out.println(json.getString("result"));
+		System.out.println("getValue.json:");
+		System.out.println(json.toString(4));
+//		System.out.println(json.getString("result"));
 		return json.getString("result");
 	}
 	
@@ -122,7 +133,8 @@ public class Web3 {
 //	对方法的返回值进行解码,这个方法只能解码返回值类型是静态类型的返回值
 	public static List<String> decodeReturnValue(String returnType, String data) {
 		List<String > list=new ArrayList<String>();
-		
+		System.out.println("returnType: " + returnType);
+		System.out.println("data: " + data);
 		if(returnType.contains("uint")) {
 			String value=data.substring(2, data.length());
 			list.add(Integer.parseInt(value,16)+"");
@@ -162,6 +174,11 @@ public class Web3 {
 	
 //	封装了系统的一些方法
 	public static String universalCall(String functionName,String objStr,String[] content,Boolean flag){
+		System.out.println("objStr: " + objStr);
+		for(int i = 0; i < content.length; ++i) {
+			System.out.println("content[" + i + "]: " + content[i]);
+		}
+		System.out.println("flag: " + flag);
 		String m = "";
 		if(content!=null&&content.length>0){
 			StringBuffer con = new StringBuffer();
@@ -189,8 +206,8 @@ public class Web3 {
                 .entity(rpc, MediaType.APPLICATION_JSON)
                 .post(String.class);
 		JSONObject json=JSONObject.fromObject(response);
-		System.out.println(json);
-		System.out.println(json.getString("result"));
+		System.out.println(json.toString(4));
+//		System.out.println(json.getString("result"));
 		return json.getString("result");
 	}
 	
@@ -241,11 +258,14 @@ public class Web3 {
 
 //  调用平台方法，估测一笔交易需要消耗多少gas
 	private static String getGas(String from,String to,String data){
-		String rpc = "{\"jsonrpc\":\"2.0\",\"method\": \"eth_estimateGas\", \"params\": [{\"from\": \""+from+"\", \"data\": \""+data+"\"}], \"id\": 5}";
+
+		String rpc = "{\"jsonrpc\":\"2.0\",\"method\": \"eth_estimateGas\", \"params\": [{\"from\": \"" + from + "\", \"gasPrice\": \"0x4a817c800\", \"data\": \"" + data + "\"}], \"id\": 5}";
+		System.out.println("getGas: " + rpc);
 		String response = r.accept(MediaType.APPLICATION_JSON, MediaType.TEXT_XML)
 				.entity(rpc, MediaType.APPLICATION_JSON)
 				.post(String.class);
 		JSONObject json=JSONObject.fromObject(response);
+		System.out.println(json.toString(4));
 		System.out.println(json.getString("result"));
 		return json.getString("result");
 	}
@@ -359,7 +379,8 @@ public class Web3 {
 			}
 			functionHead += type[i]+",";
 		}
-		functionHead = functionHead.substring(0, functionHead.length()-1)+")";System.out.println(functionHead);
+		functionHead = functionHead.substring(0, functionHead.length()-1)+")";
+		System.out.println(functionHead);
 		String functionId = "0x"+Sha3.sha3(functionHead).substring(0, 8);
 		if(!dyTypes.isEmpty()){
 			String[] dy = dyTypes.substring(0, dyTypes.length()-1).split(",");

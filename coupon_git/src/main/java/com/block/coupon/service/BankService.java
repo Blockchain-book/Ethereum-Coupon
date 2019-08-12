@@ -47,8 +47,8 @@ public interface BankService {
 
     List<MerchantRegisterCustom> queryUncheckedMerchant() throws Exception;
 
-	// 更新商户的staus更新为“1”
-	void updateStaus(String status, String id) throws Exception;
+	// 更新商户的status更新为“1”
+	void updateStatus(String status, String id) throws Exception;
 
     Map<String, Object> merchantCheck(String id, String status, String operationOpinion, String id1) throws Exception;
 

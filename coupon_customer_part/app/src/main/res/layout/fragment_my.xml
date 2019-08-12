@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/empty_cart_view"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -64,7 +65,7 @@
                     android:layout_gravity="right"
                     android:gravity="center_vertical"
                     android:paddingRight="20.0dip"
-                    android:src="@mipmap/rightbar3" />
+                    app:srcCompat="@mipmap/rightbar3" />
             </TableRow>
             <TableRow
                 android:id="@+id/setting_row4"
@@ -92,7 +93,7 @@
                     android:layout_gravity="right"
                     android:gravity="center_vertical"
                     android:paddingRight="20.0dip"
-                    android:src="@mipmap/rightbar3" />
+                    app:srcCompat="@mipmap/rightbar3" />
             </TableRow>
             <TableRow
                 android:id="@+id/setting_row5"
@@ -121,7 +122,7 @@
                     android:layout_gravity="right"
                     android:gravity="center_vertical"
                     android:paddingRight="20.0dip"
-                    android:src="@mipmap/rightbar3" />
+                    app:srcCompat="@mipmap/rightbar3" />
             </TableRow>
         </TableLayout>
     </LinearLayout>

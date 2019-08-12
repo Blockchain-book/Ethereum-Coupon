@@ -4,7 +4,7 @@ public class BankStaffCustom extends BankStaff{
     private String online;
 
     public String getOnline() {
-        return online;
+        return this.online;
     }
 
     public void setOnline(String online) {

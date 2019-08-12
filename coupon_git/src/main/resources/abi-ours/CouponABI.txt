@@ -1,197 +1,277 @@
-[{
-    constant: false,
-    inputs: [{
-        name: "addr",
-        type: "address"
-    }],
-    name: "setOwner",
-    outputs: [],
-    payable: false,
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        name: "date",
-        type: "bytes32"
-    }],
-    name: "setObtainDate",
-    outputs: [],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getState",
-    outputs: [{
-        name: "",
-        type: "uint256"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getValue",
-    outputs: [{
-        name: "",
-        type: "uint256"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        name: "_date",
-        type: "bytes32"
-    }],
-    name: "setConsumeDate",
-    outputs: [],
-    payable: false,
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        name: "_granter",
-        type: "address"
-    }],
-    name: "setGranter",
-    outputs: [],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getConsumeValue",
-    outputs: [{
-        name: "",
-        type: "uint256"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getStartDate",
-    outputs: [{
-        name: "",
-        type: "bytes32"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getOwner",
-    outputs: [{
-        name: "",
-        type: "address"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getGranter",
-    outputs: [{
-        name: "",
-        type: "address"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        name: "_obtainValue",
-        type: "uint256"
-    }],
-    name: "setObtainValue",
-    outputs: [],
-    payable: false,
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        name: "_state",
-        type: "uint256"
-    }],
-    name: "setState",
-    outputs: [],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getEndDate",
-    outputs: [{
-        name: "",
-        type: "bytes32"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getLimit",
-    outputs: [{
-        name: "",
-        type: "uint256"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getConsumeDate",
-    outputs: [{
-        name: "",
-        type: "bytes32"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getObtainValue",
-    outputs: [{
-        name: "",
-        type: "uint256"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getObtainDate",
-    outputs: [{
-        name: "",
-        type: "bytes32"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        name: "_value",
-        type: "uint256"
-    }],
-    name: "setConsumeValue",
-    outputs: [],
-    payable: false,
-    type: "function"
-}, {
-    inputs: [{
-        name: "_value",
-        type: "uint256"
-    }, {
-        name: "_limit",
-        type: "uint256"
-    }, {
-        name: "_startDate",
-        type: "bytes32"
-    }, {
-        name: "_endDate",
-        type: "bytes32"
-    }],
-    payable: false,
-    type: "constructor"
-}]
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "addr",
+				"type": "address"
+			}
+		],
+		"name": "setOwner",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "date",
+				"type": "bytes32"
+			}
+		],
+		"name": "setObtainDate",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getState",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getValue",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_date",
+				"type": "bytes32"
+			}
+		],
+		"name": "setConsumeDate",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_granter",
+				"type": "address"
+			}
+		],
+		"name": "setGranter",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getConsumeValue",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getStartDate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getOwner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getGranter",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_obtainValue",
+				"type": "uint256"
+			}
+		],
+		"name": "setObtainValue",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_state",
+				"type": "uint256"
+			}
+		],
+		"name": "setState",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getEndDate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getLimit",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getConsumeDate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getObtainValue",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getObtainDate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "setConsumeValue",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "_value",
+				"type": "uint256"
+			},
+			{
+				"name": "_limit",
+				"type": "uint256"
+			},
+			{
+				"name": "_startDate",
+				"type": "bytes32"
+			},
+			{
+				"name": "_endDate",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	}
+]

@@ -1,21 +1,19 @@
 package com.example.babara.coupon_customer_part.Fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.app.Fragment;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.babara.coupon_customer_part.R;
 import com.example.babara.coupon_customer_part.zxing.activity.CaptureActivity;
-import com.google.zxing.integration.android.IntentIntegrator;
 
-import static android.app.Activity.RESULT_OK;
+import static androidx.appcompat.app.AppCompatActivity.RESULT_OK;
 
 
 public class ScanCodePayFragment extends Fragment implements View.OnClickListener{

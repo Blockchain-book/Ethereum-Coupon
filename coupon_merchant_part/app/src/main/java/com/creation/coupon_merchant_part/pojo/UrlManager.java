@@ -8,6 +8,6 @@ package com.creation.coupon_merchant_part.pojo;
 
 public class UrlManager {
     public static String createUrlString(String addString){
-        return "http://192.168.1.157:8080/coupon"+ addString;
+        return "http://192.168.31.16:8080/coupon"+ addString;
     }
 }

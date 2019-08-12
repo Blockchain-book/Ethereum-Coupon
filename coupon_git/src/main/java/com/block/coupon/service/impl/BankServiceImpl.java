@@ -151,7 +151,9 @@ public class BankServiceImpl implements BankService {
 		// TODO Auto-generated method stub
 		try {
 			BankStaffCustom bsc=bankMapper.queryBankStaffByAccount(bankStaffCustom.getAccount());
+
 			if(bsc!=null){
+				System.out.println("用户已经存在");
 				return "0";//用户已经存在
 			}
 			bankStaffCustom.setId(UUID.randomUUID().toString());
@@ -161,6 +163,7 @@ public class BankServiceImpl implements BankService {
 			return "1";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			System.out.println("注册错误");
 			return "0";
 		}
 	}
@@ -293,7 +296,7 @@ public class BankServiceImpl implements BankService {
     }
 
 	@Override
-	public void updateStaus(String status, String id) throws Exception {
+	public void updateStatus(String status, String id) throws Exception {
 		MerchantCustom mc = new MerchantCustom();
 		mc.setId(id);
 		//===郭威更新，创建商户
@@ -316,9 +319,9 @@ public class BankServiceImpl implements BankService {
 		String merchantContractAddress = Web3.decodeReturnValue("address", resultAddress).get(0);
 		mc.setContractAddress(merchantContractAddress);
 		//===更新结束
-		merchantMapper.updateAddrPk(mc);
+		this.merchantMapper.updateAddrPk(mc);
 		MerchantStatus ms = new MerchantStatus(id,status);
-		this.merchantMapper.updateStaus(ms);
+		this.merchantMapper.updateStatus(ms);
 	}
 
 

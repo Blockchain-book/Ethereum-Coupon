@@ -39,7 +39,7 @@
    
    <!-- 查询已使用的优惠券总额-->
    <select id="queryTotalUsedCoupons" parameterType="string" resultType="couponcountinfo">
-      select count(status) totalUsedCount
+      select count(status) as totalUsedCount
       from coupon
       where rulerId=#{id} and status="1" 
       group by status
@@ -47,13 +47,13 @@
    
     <!-- 查询未使用的优惠券总额-->
    <select id="queryTotalUnusedCoupons" parameterType="string" resultType="couponcountinfo">
-      select count(status) totalUnusedCount
+      select count(status) as totalUnusedCount
       from coupon
       where rulerId=#{id} and status="2" 
       group by status
    </select>
-    <select id="queryCouponsUnsed" parameterType="string" resultType="Integer">
-        select count(status) totalUnusedCount
+    <select id="queryCouponsUnused" parameterType="string" resultType="Integer">
+        select count(status) as totalUnusedCount
         from coupon
         where ownerId=#{id} and status="2"
         group by status

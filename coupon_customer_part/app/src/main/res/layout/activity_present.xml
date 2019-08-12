@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_present"
     android:layout_width="match_parent"
@@ -18,7 +19,7 @@
             android:layout_width="60dp"
             android:layout_gravity="center"
             android:layout_height="20dp"
-            android:src="@mipmap/backbar"/>
+            app:srcCompat="@mipmap/backbar"/>
         <TextView
             android:id="@+id/txt_top"
             android:layout_width="wrap_content"
@@ -50,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_weight="6"
                 android:layout_height="wrap_content">
@@ -61,7 +62,7 @@
                     android:hint="请输入手机号码"
                     android:inputType="phone"
                     android:maxLines="1" />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/scan_code_present_button"

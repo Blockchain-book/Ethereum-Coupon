@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:orientation="vertical">
@@ -16,7 +17,7 @@
             android:layout_width="60dp"
             android:layout_gravity="center"
             android:layout_height="20dp"
-            android:src="@mipmap/backbar"/>
+            app:srcCompat="@mipmap/backbar"/>
         <TextView
             android:id="@+id/txt_top"
             android:layout_width="wrap_content"
@@ -62,7 +63,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/scan_line"/>
+                app:srcCompat="@drawable/scan_line"/>
 
         </RelativeLayout>
 

@@ -1,15 +1,15 @@
 package com.example.babara.coupon_customer_part.activity;
 
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.babara.coupon_customer_part.R;
 
-public class HelpActivity extends Activity implements View.OnClickListener{
+public class HelpActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ImageView backImage;
 
