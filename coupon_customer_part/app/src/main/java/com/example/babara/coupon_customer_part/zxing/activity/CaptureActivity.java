@@ -15,8 +15,6 @@
  */
 package com.example.babara.coupon_customer_part.zxing.activity;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,29 +30,30 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.babara.coupon_customer_part.R;
 import com.example.babara.coupon_customer_part.activity.ConfirmPayActivity;
 import com.example.babara.coupon_customer_part.activity.PresentActivity;
-import com.example.babara.coupon_customer_part.activity.TestActivity;
 import com.example.babara.coupon_customer_part.pojo.NearbyMerchantItem;
 import com.example.babara.coupon_customer_part.utils.AsyncResponse;
 import com.example.babara.coupon_customer_part.utils.HttpTaskForJsonTool;
 import com.example.babara.coupon_customer_part.utils.HttpTaskTool;
 import com.example.babara.coupon_customer_part.utils.UrlManager;
+import com.example.babara.coupon_customer_part.zxing.camera.CameraManager;
 import com.example.babara.coupon_customer_part.zxing.decode.DecodeThread;
 import com.example.babara.coupon_customer_part.zxing.utils.BeepManager;
 import com.example.babara.coupon_customer_part.zxing.utils.CaptureActivityHandler;
 import com.example.babara.coupon_customer_part.zxing.utils.InactivityTimer;
-
-import java.io.IOException;
-import java.lang.reflect.Field;
-import com.example.babara.coupon_customer_part.zxing.camera.*;
 import com.google.zxing.Result;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.lang.reflect.Field;
 
 /**
  * This activity opens the camera and does the actual scanning on a background
@@ -65,7 +64,7 @@ import org.json.JSONObject;
  * @author dswitkin@google.com (Daniel Switkin)
  * @author Sean Owen
  */
-public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
+public final class CaptureActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 
     private static final String TAG = CaptureActivity.class.getSimpleName();
 

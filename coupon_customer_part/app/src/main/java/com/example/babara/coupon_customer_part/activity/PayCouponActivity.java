@@ -1,11 +1,6 @@
 package com.example.babara.coupon_customer_part.activity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -17,16 +12,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.utils.DistanceUtil;
 import com.example.babara.coupon_customer_part.R;
 import com.example.babara.coupon_customer_part.pojo.NearbyMerchantItem;
-import com.example.babara.coupon_customer_part.utils.AsyncResponse;
-import com.example.babara.coupon_customer_part.utils.HttpTaskForJsonTool;
-import com.example.babara.coupon_customer_part.utils.HttpTaskTool;
 import com.example.babara.coupon_customer_part.utils.NearbyMerchantAdapter;
 import com.example.babara.coupon_customer_part.utils.UrlManager;
 import com.example.babara.coupon_customer_part.zxing.activity.CaptureActivity;
@@ -40,10 +33,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 
-public class PayCouponActivity extends Activity implements View.OnClickListener {
+public class PayCouponActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView backImageView;           //返回按钮
     private Button scanCodePayButton;          //“扫一扫”按钮
     private TextView nearbyMerchantText;       //“附近商家”按钮

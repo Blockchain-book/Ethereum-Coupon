@@ -1,64 +1,111 @@
-[{
-    constant: false,
-    inputs: [{
-        name: "signature",
-        type: "bytes"
-    }, {
-        name: "merchantAddress",
-        type: "address"
-    }, {
-        name: "amount",
-        type: "uint256"
-    }],
-    name: "approve",
-    outputs: [],
-    payable: false,
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        name: "merchantAddress",
-        type: "address"
-    }],
-    name: "approveWithdraw",
-    outputs: [],
-    payable: false,
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        name: "merchantAccount",
-        type: "address"
-    }],
-    name: "createMerchant",
-    outputs: [],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [{
-        name: "merchantAccount",
-        type: "address"
-    }],
-    name: "getCorrespondingMerchant",
-    outputs: [{
-        name: "",
-        type: "address"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "getMerchants",
-    outputs: [{
-        name: "",
-        type: "address[]"
-    }],
-    payable: false,
-    type: "function"
-}, {
-    inputs: [],
-    payable: false,
-    type: "constructor"
-}]
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "merchantAddress",
+				"type": "address"
+			},
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "merchantAddress",
+				"type": "address"
+			}
+		],
+		"name": "approveWithdraw",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "merchantAccount",
+				"type": "address"
+			}
+		],
+		"name": "createMerchant",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "merchantAccount",
+				"type": "address"
+			}
+		],
+		"name": "getCorrespondingMerchant",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getMerchants",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "v",
+				"type": "uint256"
+			}
+		],
+		"name": "returnValue",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

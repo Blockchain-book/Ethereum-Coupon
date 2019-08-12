@@ -16,7 +16,6 @@
 
 package com.example.babara.coupon_customer_part.zxing.utils;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
@@ -25,6 +24,8 @@ import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.babara.coupon_customer_part.R;
 
@@ -39,12 +40,12 @@ public class BeepManager implements MediaPlayer.OnCompletionListener, MediaPlaye
     private static final float BEEP_VOLUME = 0.10f;
     private static final long VIBRATE_DURATION = 200L;
 
-    private final Activity activity;
+    private final AppCompatActivity activity;
     private MediaPlayer mediaPlayer;
     private boolean playBeep;
     private boolean vibrate;
 
-    public BeepManager(Activity activity) {
+    public BeepManager(AppCompatActivity activity) {
         this.activity = activity;
         this.mediaPlayer = null;
         updatePrefs();

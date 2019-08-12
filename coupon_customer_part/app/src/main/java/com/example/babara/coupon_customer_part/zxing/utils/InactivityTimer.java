@@ -17,7 +17,6 @@
 package com.example.babara.coupon_customer_part.zxing.utils;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +25,8 @@ import android.os.AsyncTask;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Finishes an activity after a period of inactivity if the device is on battery
@@ -37,12 +38,12 @@ public class InactivityTimer {
 
     private static final long INACTIVITY_DELAY_MS = 5 * 60 * 1000L;
 
-    private Activity activity;
+    private AppCompatActivity activity;
     private BroadcastReceiver powerStatusReceiver;
     private boolean registered;
     private AsyncTask<Object, Object, Object> inactivityTask;
 
-    public InactivityTimer(Activity activity) {
+    public InactivityTimer(AppCompatActivity activity) {
         this.activity = activity;
         powerStatusReceiver = new PowerStatusReceiver();
         registered = false;

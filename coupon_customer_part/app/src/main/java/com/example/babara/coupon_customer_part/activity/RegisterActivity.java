@@ -1,12 +1,9 @@
 package com.example.babara.coupon_customer_part.activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -16,23 +13,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.babara.coupon_customer_part.R;
 import com.example.babara.coupon_customer_part.utils.AsyncResponse;
 import com.example.babara.coupon_customer_part.utils.HttpTaskForJsonTool;
 import com.example.babara.coupon_customer_part.utils.UrlManager;
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-public class RegisterActivity extends Activity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView backImageView;        //返回按钮
     private EditText registerNoEditText;    //手机号

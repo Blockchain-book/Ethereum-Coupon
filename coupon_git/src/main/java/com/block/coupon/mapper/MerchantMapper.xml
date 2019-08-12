@@ -75,7 +75,7 @@
      where id=#{id}
    </update>
    
-   <!--根据商户注册申请表id，查询注册表中的信息  -->
+   <!--根据商户注册id，查询商户表中的信息  -->
    <select id="queryMerInfoFromRegisterById" parameterType="string" resultType="merchantregistercustom">
       select * 
       from merchant
@@ -172,7 +172,7 @@
    </select>
 
    <!--商户注册信息确认-->
-   <update id="updateStaus" parameterType="merchantstatus">
+   <update id="updateStatus" parameterType="merchantstatus">
       update merchant set status=#{status} where id=#{id}
    </update>
 

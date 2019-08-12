@@ -1,6 +1,6 @@
 package com.example.babara.coupon_customer_part.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 

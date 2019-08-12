@@ -54,7 +54,7 @@ public interface MerchantMapper {
 	//  查看商户账号已绑定的银行账户
 	String selectBankAccount(String merchantNumber)throws Exception;
 
-	void updateStaus(MerchantStatus ms) throws Exception;
+	void updateStatus(MerchantStatus ms) throws Exception;
 
 	MerchantRegisterCustom queryMerchantRegisterById(@Param("id") String id) throws Exception;
 

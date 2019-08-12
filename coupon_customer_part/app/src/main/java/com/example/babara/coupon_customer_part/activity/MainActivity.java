@@ -1,15 +1,15 @@
 package com.example.babara.coupon_customer_part.activity;
 
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.example.babara.coupon_customer_part.Fragment.FirstPageFragment;
@@ -17,7 +17,7 @@ import com.example.babara.coupon_customer_part.Fragment.MyFragment;
 import com.example.babara.coupon_customer_part.Fragment.WalletFragment;
 import com.example.babara.coupon_customer_part.R;
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
 
     private TextView tabFirstPage;         //底部导航栏“首页”选项
@@ -64,7 +64,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         hideAllFragment(transaction);
         //分别点击导航栏三个按钮时，分别加载三个fragment

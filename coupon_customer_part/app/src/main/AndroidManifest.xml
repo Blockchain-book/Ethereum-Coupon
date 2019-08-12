@@ -43,10 +43,10 @@
                 </action>
             </intent-filter>
         </service>
-        <!--设置AccessKey-->
+        <!--设置AccessKey  key:开发者申请的Key-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="HMrykXemHtGHAGu4RBXXaZKxbEn7VsUG" />       //key:开发者申请的Key
+            android:value="HMrykXemHtGHAGu4RBXXaZKxbEn7VsUG" />
 
         <activity android:name=".activity.MainActivity">
             <intent-filter>

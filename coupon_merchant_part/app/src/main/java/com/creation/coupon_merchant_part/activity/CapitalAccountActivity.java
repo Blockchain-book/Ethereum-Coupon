@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -23,14 +23,11 @@ import android.widget.Toast;
 
 import com.creation.coupon_merchant_part.R;
 import com.creation.coupon_merchant_part.pojo.BillItem;
-import com.creation.coupon_merchant_part.pojo.CouponStateItem;
 import com.creation.coupon_merchant_part.pojo.UrlManager;
 import com.creation.coupon_merchant_part.utils.AsyncResponse;
 import com.creation.coupon_merchant_part.utils.BillAdapter;
-import com.creation.coupon_merchant_part.utils.CouponStateAdapter;
 import com.creation.coupon_merchant_part.utils.DataUtils;
 import com.creation.coupon_merchant_part.utils.HttpTaskForJsonTool;
-import com.creation.coupon_merchant_part.utils.HttpTaskTool;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,9 +38,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.PrivateKey;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Description:该类主要实现“我的->资金账户”的展示。

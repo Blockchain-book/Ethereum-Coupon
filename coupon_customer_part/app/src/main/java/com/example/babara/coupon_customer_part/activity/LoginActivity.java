@@ -1,7 +1,5 @@
 package com.example.babara.coupon_customer_part.activity;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,9 +15,11 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.babara.coupon_customer_part.R;
 import com.example.babara.coupon_customer_part.utils.UrlManager;
@@ -40,7 +40,7 @@ import java.net.URLDecoder;
 /**
  * Description:该类主要实现用户登录功能。
  */
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private boolean hasLogined = false;
     private static final int REQUEST_READ_CONTACTS = 0;

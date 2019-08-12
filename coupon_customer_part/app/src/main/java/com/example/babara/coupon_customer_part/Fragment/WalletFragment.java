@@ -1,6 +1,5 @@
 package com.example.babara.coupon_customer_part.Fragment;
 
-import android.app.Fragment;
 //import android.app.FragmentManager;
 //import android.app.FragmentTransaction;
 //import android.content.BroadcastReceiver;
@@ -9,18 +8,19 @@ import android.app.Fragment;
 //import android.content.IntentFilter;
 //import android.net.ConnectivityManager;
 //import android.net.NetworkInfo;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.babara.coupon_customer_part.R;
-import com.example.babara.coupon_customer_part.utils.PanelDountChart;
 
 /**
  * Created by Babara Liang on 2016/12/26.

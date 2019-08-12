@@ -2,6 +2,7 @@ package com.block.coupon.controller;
 
 import com.block.coupon.po.*;
 import com.block.coupon.service.BankService;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -135,6 +136,7 @@ public class BankController {
     public String bankStaffLogin(@RequestParam("username") String account, @RequestParam("password") String password,
                                  @RequestParam(value = "repassword", required = false) String repassword, Map<String, String> m, HttpSession session) throws Exception{
         System.out.println(account + " .. " + password) ;
+//		System.out.println("bankService-login: ");
         String resultCode = this.bankService.login(account, password).get("resultCode");
         if(resultCode == "0" ) {
             m.put("error_code", "用户名错误，请重新输入");
@@ -143,8 +145,10 @@ public class BankController {
             m.put("error_code","密码错误，请重新输入");
             SUCCESS = "bank/login";
         }else if(resultCode == "2"){
-            BankStaffCustom bankStaffCustom = this.bankService.queryBankStaffByAccount(account);
-            if(bankStaffCustom.getOnline().equals("1")){
+			BankStaffCustom bankStaffCustom = this.bankService.queryBankStaffByAccount(account);
+//			System.out.println("bankStaffCustom: ");
+//			System.out.println(bankStaffCustom.getOnline() instanceof Object);
+            if(bankStaffCustom.getOnline() != null && bankStaffCustom.getOnline().equals("1")){
 				m.put("error_code","您已在线，请勿重复登录");
 				SUCCESS = "bank/login";
 			}else {
@@ -156,8 +160,8 @@ public class BankController {
 				}
 				// 将用户写入session
 				session.setAttribute("currenBankStaff", bankStaffCustom);
-				bankStaffCustom.setOnline("1");
-				bankService.updateOnline(bankStaffCustom);
+//				bankStaffCustom.setOnline("1");
+//				bankService.updateOnline(bankStaffCustom);
 			}
         }
         return SUCCESS;
@@ -185,7 +189,7 @@ public class BankController {
 		// 1. 将此商户id的商户的stauts更新: 1--通过， 2--拒绝
 		String res;
 		try {
-			this.bankService.updateStaus(status,id);
+			this.bankService.updateStatus(status,id);
 			res = "1";
 		}catch (Exception e){
 			e.printStackTrace();

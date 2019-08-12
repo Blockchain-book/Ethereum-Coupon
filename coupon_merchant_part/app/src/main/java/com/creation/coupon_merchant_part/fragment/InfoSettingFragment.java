@@ -10,34 +10,28 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 
-import com.creation.coupon_merchant_part.pojo.SettlementRecord;
 import com.creation.coupon_merchant_part.utils.AsyncResponse;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.creation.coupon_merchant_part.R;
-import com.creation.coupon_merchant_part.activity.IssueActivity;
 import com.creation.coupon_merchant_part.pojo.UrlManager;
-import com.creation.coupon_merchant_part.utils.AsyncResponse;
 import com.creation.coupon_merchant_part.utils.HttpTaskTool;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.EOFException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import android.content.SharedPreferences;
 
 
 /**

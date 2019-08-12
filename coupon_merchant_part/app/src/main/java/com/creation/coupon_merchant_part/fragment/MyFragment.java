@@ -5,30 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.creation.coupon_merchant_part.activity.CapitalAccountActivity;
-import com.creation.coupon_merchant_part.activity.CouponStateActivity;
-import com.creation.coupon_merchant_part.activity.HelpActivity;
 import com.creation.coupon_merchant_part.activity.LoginActivity;
 import com.creation.coupon_merchant_part.R;
 import com.creation.coupon_merchant_part.activity.MySettingsActivity;
 import com.creation.coupon_merchant_part.activity.QRCodeActivity;
-import com.creation.coupon_merchant_part.pojo.BillItem;
-import com.creation.coupon_merchant_part.pojo.UrlManager;
-import com.creation.coupon_merchant_part.utils.AsyncResponse;
-import com.creation.coupon_merchant_part.utils.HttpTaskTool;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 

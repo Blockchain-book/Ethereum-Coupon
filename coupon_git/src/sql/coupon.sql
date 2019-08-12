@@ -31,6 +31,8 @@ CREATE TABLE `bank_staff` (
   `salt` varchar(20) NOT NULL,
   `publicKey` varchar(50) DEFAULT NULL,
   `position` varchar(2) NOT NULL COMMENT '1:操作员\n2:复审员',
+  `securityCode` varchar(70) NOT NULL,
+  `online` varchar(2) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `account_UNIQUE` (`account`)
@@ -52,6 +54,8 @@ CREATE TABLE `consumer` (
   `publicKey` varchar(50) NOT NULL,
   `contractAddress` varchar(50) NOT NULL,
   `token` varchar(70) DEFAULT NULL,
+  `isFrozen` varchar(2) NOT NULL DEFAULT '0',
+  `mark` varchar(2) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `account_UNIQUE` (`account`),
@@ -169,11 +173,14 @@ CREATE TABLE `merchant` (
   `settlementBalance` int(11) NOT NULL DEFAULT '0',
   `contractAddress` varchar(50) NOT NULL,
   `conCouponRulerId` varchar(40) DEFAULT NULL,
+  `status` varchar(2) NOT NULL DEFAULT '0',
+  `accountBalance` int(11) NOT NULL DEFAULT '0',
+  `description` varchar(70) DEFAULT NULL,
+  `latitude` varchar(50) NOT NULL,
+  `longitude` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
-  UNIQUE KEY `account_UNIQUE` (`account`),
-  UNIQUE KEY `publicKey_UNIQUE` (`publicKey`),
-  UNIQUE KEY `contractAddress_UNIQUE` (`contractAddress`)
+  UNIQUE KEY `account_UNIQUE` (`account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -181,25 +188,25 @@ CREATE TABLE `merchant` (
 -- Table structure for table `merchant_register`
 --
 
-DROP TABLE IF EXISTS `merchant_register`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `merchant_register` (
-  `id` varchar(40) NOT NULL,
-  `account` varchar(11) NOT NULL,
-  `password` varchar(70) NOT NULL,
-  `salt` varchar(20) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `licence` varchar(13) NOT NULL,
-  `legalEntityName` varchar(40) NOT NULL,
-  `businessScope` varchar(50) NOT NULL,
-  `status` varchar(2) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`),
-  UNIQUE KEY `account_UNIQUE` (`account`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- DROP TABLE IF EXISTS `merchant_register`;
+-- /*!40101 SET @saved_cs_client     = @@character_set_client */;
+-- /*!40101 SET character_set_client = utf8 */;
+-- CREATE TABLE `merchant_register` (
+--   `id` varchar(40) NOT NULL,
+--   `account` varchar(11) NOT NULL,
+--   `password` varchar(70) NOT NULL,
+--   `salt` varchar(20) NOT NULL,
+--   `name` varchar(50) NOT NULL,
+--   `address` varchar(50) NOT NULL,
+--   `licence` varchar(13) NOT NULL,
+--   `legalEntityName` varchar(40) NOT NULL,
+--   `businessScope` varchar(50) NOT NULL,
+--   `status` varchar(2) NOT NULL DEFAULT '0',
+--   PRIMARY KEY (`id`),
+--   UNIQUE KEY `id_UNIQUE` (`id`),
+--   UNIQUE KEY `account_UNIQUE` (`account`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `settlement_operation`

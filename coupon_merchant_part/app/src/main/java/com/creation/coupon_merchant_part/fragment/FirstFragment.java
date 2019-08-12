@@ -2,43 +2,19 @@ package com.creation.coupon_merchant_part.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.creation.coupon_merchant_part.R;
 import com.creation.coupon_merchant_part.activity.CouponStateActivity;
 import com.creation.coupon_merchant_part.activity.IssueActivity;
 import com.creation.coupon_merchant_part.activity.IssueManageActivity;
-import com.creation.coupon_merchant_part.activity.LoginActivity;
-import com.creation.coupon_merchant_part.activity.MainActivity;
-import com.creation.coupon_merchant_part.activity.TestActivity;
 import com.creation.coupon_merchant_part.activity.TicketApplyActivity;
-import com.creation.coupon_merchant_part.pojo.CouponStateItem;
-import com.creation.coupon_merchant_part.pojo.UrlManager;
-import com.creation.coupon_merchant_part.utils.AsyncResponse;
-import com.creation.coupon_merchant_part.utils.HttpTaskTool;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.content.Context.MODE_PRIVATE;
 /**
  * Created by Babara Liang on 2016/12/26.
  * Description:该类主要展现首页上的四个功能按钮，并且实现点击时的跳转。

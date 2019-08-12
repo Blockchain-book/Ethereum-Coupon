@@ -1,12 +1,9 @@
 package com.example.babara.coupon_customer_part.activity;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.BaseTransientBottomBar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -19,11 +16,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.babara.coupon_customer_part.R;
 import com.example.babara.coupon_customer_part.pojo.CouponItem;
 import com.example.babara.coupon_customer_part.pojo.NearbyMerchantItem;
 import com.example.babara.coupon_customer_part.utils.AsyncResponse;
-import com.example.babara.coupon_customer_part.utils.CouponAdapter;
 import com.example.babara.coupon_customer_part.utils.CouponConfirmAdapter;
 import com.example.babara.coupon_customer_part.utils.HttpTaskForJsonTool;
 import com.example.babara.coupon_customer_part.utils.HttpTaskTool;
@@ -34,9 +33,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class ConfirmPayActivity extends Activity implements View.OnClickListener{
+public class ConfirmPayActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView merchantName;
     private NearbyMerchantItem merchant;
     private ArrayList<CouponItem> list;
