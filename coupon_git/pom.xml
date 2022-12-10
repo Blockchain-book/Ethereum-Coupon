@@ -14,7 +14,7 @@
     <!--add  maven release-->
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <spring.version>4.1.4.RELEASE</spring.version>
+    <spring.version>6.0.0</spring.version>
     <jackson.version>2.5.0</jackson.version>
   </properties>
 
